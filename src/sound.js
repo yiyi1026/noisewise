@@ -55,19 +55,10 @@ class Sound extends Component {
     }
     return (
       <div className="sound">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        <img alt="Dryer" src="./15_Dryer.png" id='dryer' onClick={() => this.play()} style={opacity} >
-        {/* <img alt='dryer' src="/15_Dryer.png"/> */}
-        {/* <img alt="dryer" src='https://play.google.com/store/apps/details?id=com.target.ui'/> */}
-        
-        </img>
-        <Range min={0} max={1} step={0.1} className={this.state.visibility} value={this.state.volume} onChange={(e) => this.volumeAdjust(e)}/>
+      <a onClick={() => this.play()} style={opacity} href="#dryer" >
+        <img alt="Dryer" src="./15_Dryer.png" id='dryer' />        
+      </a>
+        <Range min={0} max={1} step={0.1} className={`slider ${this.state.visibility}`}value={this.state.volume} onChange={(e) => this.volumeAdjust(e)}/>
       </div>
     );
   }
