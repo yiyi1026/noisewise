@@ -53,14 +53,14 @@ class Sound extends Component {
     if(this.state.visibility == 'hidden'){
       opacity = {opacity: "0.5"};
     }
-    // console.log(this.props.name);
+
     return (
       <div className="sound">
       <a onClick={() => this.play()} style={opacity} href="#dryer" >
-        <img alt="Dryer" src={"./images/" + this.props.name + ".png"} id='dryer' /> 
+        <img alt="Dryer" src={`./images/${this.props.name}.png`} id='dryer' /> 
        
       </a>
-        <Range min={0} max={1} step={0.1} className={`slider ${this.state.visibility}`}value={this.state.volume} onChange={(e) => this.volumeAdjust(e)}/>
+        <Range min={0} max={1} step={0.1} className={`slider ${this.state.visibility}`} value={this.state.volume} onChange={(e) => this.volumeAdjust(e)}/>
       </div>
     );
   }
