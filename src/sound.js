@@ -7,7 +7,7 @@ import './sound.css';
 class Sound extends Component {
   constructor(props){
     super(props);
-    let audio= new Audio(this.props.name)
+    let audio= new Audio(this.props.name+".mp3")
     audio.volume = 0.2
     this.state = {
       audio,
@@ -53,10 +53,12 @@ class Sound extends Component {
     if(this.state.visibility == 'hidden'){
       opacity = {opacity: "0.5"};
     }
+    // console.log(this.props.name);
     return (
       <div className="sound">
       <a onClick={() => this.play()} style={opacity} href="#dryer" >
-        <img alt="Dryer" src="./15_Dryer.png" id='dryer' />        
+        <img alt="Dryer" src={"./images/" + this.props.name + ".png"} id='dryer' /> 
+       
       </a>
         <Range min={0} max={1} step={0.1} className={`slider ${this.state.visibility}`}value={this.state.volume} onChange={(e) => this.volumeAdjust(e)}/>
       </div>

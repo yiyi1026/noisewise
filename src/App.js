@@ -37,7 +37,7 @@ class App extends Component {
     let body = document.getElementById('body');
     let cur_bgColor = body.style.backgroundColor;
     let new_color = this.getRandomColor();
-    body.animate([{backgroundColor: cur_bgColor},{backgroundColor: new_color}], 4200);
+    body.animate([{backgroundColor: cur_bgColor},{backgroundColor: new_color}], 10000);
     body.style.backgroundColor = new_color;
   };
 
@@ -58,7 +58,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
-      <Sound name="15-Dryer-10min.mp3"/>
+      <Sound name="dryer"/>
      {/* <Sound name="20-Fan-10min.mp3"/>
      <Sound name="25-Ocean-10min.mp3"/> */}
       </div>
