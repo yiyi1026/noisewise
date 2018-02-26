@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
 import Range from 'react-range';
 import './sound.css';
 
 class Sound extends Component {
   constructor(props){
     super(props);
-    let audio= new Audio(this.props.name+".mp3")
+    let audio= new Audio(`/../sounds/${this.props.name}.mp3`);
+    // let audio= new Audio("/../sounds/dryer.mp3")
+
     audio.volume = 0.2
     this.state = {
       audio,
@@ -50,14 +50,15 @@ class Sound extends Component {
 
   render() {
     let opacity = {opacity: "1"};
-    if(this.state.visibility == 'hidden'){
-      opacity = {opacity: "0.5"};
+    if(this.state.visibility === 'hidden'){
+      opacity = {opacity: "0.4"};
     }
+    let name = this.props.name;
 
     return (
       <div className="sound">
       <a onClick={() => this.play()} style={opacity} href="#dryer" >
-        <img alt="Dryer" src={`./images/${this.props.name}.png`} id='dryer' /> 
+        <img alt={`${name}`} src={`./images/${name}.png`} id={`${name}`} /> 
        
       </a>
         <Range min={0} max={1} step={0.1} className={`slider ${this.state.visibility}`} value={this.state.volume} onChange={(e) => this.volumeAdjust(e)}/>
