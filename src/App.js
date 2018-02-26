@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Range from 'react-range';
 import Sound from './sound';
 
 const COLORS = ["#1abc9c","#3498db","#ea5b4d","#9b59b6","#34495e","#16a085","#27ae60","#2980b9","#f1c40f","#e67e22",
@@ -13,13 +12,7 @@ const COLORS = ["#1abc9c","#3498db","#ea5b4d","#9b59b6","#34495e","#16a085","#27
 class App extends Component {
   constructor(props){
     super(props);
-  //   let audio= new Audio("15-Dryer-10min.mp3")
-  //   audio.volume = 0.2
     this.state = {
-      // background-color: 
-  //     audio,
-  //     toggle: false,
-  //     volume: 0.2
     };
     this.getRandomColor = this.getRandomColor.bind(this);
     this.changeColor = this.changeColor.bind(this);
@@ -57,9 +50,12 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
-      <Sound name="dryer"/>
-     {/* <Sound name="20-Fan-10min.mp3"/>
-     <Sound name="25-Ocean-10min.mp3"/> */}
+        <div className="sound">
+					<Sound name="stream"/>
+          <Sound name="wave"/>
+					<Sound name="train"/>
+					<Sound name="fan"/>
+        </div>
       </div>
     );
   }
