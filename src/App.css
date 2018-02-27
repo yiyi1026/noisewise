@@ -27,11 +27,15 @@
   to { transform: rotate(360deg); }
 }
 
-sound {
-  background-size: cover;
-  
-}
-
 .hidden {
   visibility: hidden;
+}
+
+.center-row{
+  margin: auto;
+}
+
+.more-space{
+  margin-bottom: 100px;
+  margin-top: 60px;
 }

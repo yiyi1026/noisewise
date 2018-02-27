@@ -5,3 +5,16 @@ img {
   height:90px;
 }
 
+.col-centered {
+  display:inline-block;
+  float:none;
+  /* reset the text-align */
+  text-align:center;
+  /* inline-block space fix */
+  /* margin-right:-4px; */
+}
+
+.sound-btn{
+  margin-bottom: 10px;
+  display: block;
+}

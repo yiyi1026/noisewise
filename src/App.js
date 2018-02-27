@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Sound from './sound';
+// import '../public/css/bootstrap.min.css';
 
 const COLORS = ["#1abc9c","#3498db","#ea5b4d","#9b59b6","#34495e","#16a085","#27ae60","#2980b9","#f1c40f","#e67e22",
 "#e74c3c","#f39c12","#d35400","#c0392b","#06b3db","#e3b63d","#dc3d66","#bd3559","#0082c8","#16528e",
@@ -50,11 +51,19 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
-        <div className="sound">
-					<Sound name="stream"/>
-          <Sound name="wave"/>
-					<Sound name="train"/>
-					<Sound name="fan"/>
+        <div className="soundList container">
+          <div className="row more-space">
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="stream"/>
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="wave"/>
+          </div>
+          <div className="row more-space">
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="train"/>
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="fan"/>
+          </div>
         </div>
       </div>
     );
