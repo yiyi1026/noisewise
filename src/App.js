@@ -14,15 +14,16 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      muted: false,
     };
     this.getRandomColor = this.getRandomColor.bind(this);
     this.changeColor = this.changeColor.bind(this);
+    this.mute = this.mute.bind(this);
 
   }
 
   getRandomColor() {
     let idx = Math.floor(Math.random() * (COLORS.length));
-    // console.log(COLORS[idx]);
     return COLORS[idx];
   }
 
@@ -39,9 +40,28 @@ class App extends Component {
     setInterval(() => {this.changeColor(bgColor)}, interval);
   };
 
+  mute(){
+    if (this.state.muted === false){
+      this.setState({muted: true});
+    }else{
+      this.setState({muted: false});
+    }
+  }
+
 
   render() {
     this.bgColorChange(42000);
+    let opacity = "1";
+    let mute_state;
+    let muted = this.state.muted;
+    // console.log(muted);
+    if (muted === true){
+      opacity = "0.4";
+      mute_state = "mute";
+    }else{
+      mute_state = "unmute";
+    }
+
     return (
       <div className="App">
         {/* <header className="App-header">
@@ -51,18 +71,48 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
+        <a onClick={() => this.mute()} href="#" className="mute-btn">
+            <img alt="mute" id="mute-button" style={{opacity}} src={`./images/${mute_state}.png`} title={`${mute_state}`}/> 
+          </a>
         <div className="soundList container">
           <div className="row more-space">
             <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
-            <Sound name="stream"/>
+            <Sound name="stream" muted={`${muted}`} />
             <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
-            <Sound name="wave"/>
+            <Sound name="wave" muted={`${muted}`}/>
           </div>
           <div className="row more-space">
             <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
-            <Sound name="train"/>
+            <Sound name="train" muted={`${muted}`}/>
             <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
-            <Sound name="fan"/>
+            <Sound name="fan" muted={`${muted}`}/>
+            
+          </div>
+          <div className="row more-space">
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="stream"muted={`${muted}`}/>
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="wave" muted={`${muted}`}/>
+          </div>
+          <div className="row more-space">
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="train" muted={`${muted}`}/>
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="fan" muted={`${muted}`}/>
+            
+          </div>
+          <div className="row more-space">
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="stream" muted={`${muted}`}/>
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="wave" muted={`${muted}`}/>
+          </div>
+          <div className="row more-space">
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="train" muted={`${muted}`}/>
+            <div className="col-lg-2 col-md-2 hiddne-sm hidden-xs"></div>
+            <Sound name="fan" muted={`${muted}`}/>
+            
           </div>
         </div>
       </div>

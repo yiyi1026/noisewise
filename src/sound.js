@@ -17,6 +17,17 @@ class Sound extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps){
+    let next_muted = nextProps.muted;
+
+    if (this.props.muted === next_muted){
+      return;
+    }else{
+      let audio = this.state.audio;
+      audio.muted = !audio.muted;
+    }
+  }
+
   visibility(toggle){
     if(toggle){
       // console.log('v');
@@ -28,14 +39,20 @@ class Sound extends Component {
   };
 
   play(){
+    let audio = this.state.audio;
+    // console.log(this.props.muted);
+    // if (this.props.muted === true){
+    //   audio.muted = true;
+    // }else{
+    //   audio.muted = false;
+    // }
     if(this.state.toggle){
-      this.state.audio.pause();
+      audio.pause();
       this.setState({toggle: false}, () => this.visibility(this.state.toggle));
     } else {
-      this.state.audio.play();
+      audio.play();
       this.setState({toggle: true}, () => this.visibility(this.state.toggle));
     }
-    // this.visibility(this.state.toggle);
   }
 
   volumeAdjust(e) {
@@ -49,16 +66,16 @@ class Sound extends Component {
   }
 
   render() {
-    let opacity = {opacity: "1"};
+    let opacity = "1";
     if(this.state.visibility === 'hidden'){
-      opacity = {opacity: "0.4"};
+      opacity = "0.4";
     }
     let name = this.props.name;
 
     return (
       <div className="sound col-lg-2 col-md-2 col-sm-3 col-xs-3">
         <div className="col-centered">
-          <a onClick={() => this.play()} style={opacity} href="#" className="sound-btn">
+          <a onClick={() => this.play()} style={{opacity}} href="#" className="sound-btn">
             <img alt={`${name}`} src={`./images/${name}.png`} id={`${name}`} /> 
           </a>
           <Range min={0} max={1} step={0.1} className={`slider ${this.state.visibility}`} value={this.state.volume} onChange={(e) => this.volumeAdjust(e)}/>
