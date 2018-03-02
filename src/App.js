@@ -51,15 +51,16 @@ class App extends Component {
 
   render() {
     this.bgColorChange(42000);
-    let opacity = "1";
+    let opacity = "0.4";
     let mute_state;
     let muted = this.state.muted;
-    // console.log(muted);
+    
     if (muted === true){
-      opacity = "0.4";
       mute_state = "mute";
+      opacity = "1";
     }else{
       mute_state = "unmute";
+      opacity = "0.4";
     }
 
     return (
@@ -72,7 +73,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
         <a onClick={() => this.mute()} href="#" className="mute-btn">
-            <img alt="mute" id="mute-button" style={{opacity}} src={`./images/${mute_state}.png`} title={`${mute_state}`}/> 
+            <img alt="mute" id="mute-button" style={{opacity}} src={`./images/${mute_state}.png`} title={`${mute_state}`}/>
           </a>
         <div className="soundList container">
           <div className="row more-space">

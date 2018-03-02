@@ -43,4 +43,7 @@
 #mute-button {
   width: 30px;
   height: 30px;
+  float: right;
+  margin: 0px 40px;
+  /* opacity: 0.4; */
 }
