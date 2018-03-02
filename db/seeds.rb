@@ -10,10 +10,12 @@ Weight.delete_all
 
 # user
 guest1 = User.create!({username: 'Mario'})
+guest2 = User.create!({username: 'Mushroom'})
+
 
 weight1 = Weight.create!({user_id: guest1.id, weight:209, date: Date.new(2018,2,26)})
-weight1 = Weight.create!({user_id: guest1.id, weight:208.6, date: Date.new(2018,2,27)})
-weight1 = Weight.create!({user_id: guest1.id, weight:207, date: Date.new(2018,2,28)})
-weight1 = Weight.create!({user_id: guest1.id, weight:206.5, date: Date.new(2018,3,1)})
+weight2 = Weight.create!({user_id: guest1.id, weight:208.6, date: Date.new(2018,2,27)})
+weight3 = Weight.create!({user_id: guest2.id, weight:207, date: Date.new(2018,2,28)})
+weight4 = Weight.create!({user_id: guest2.id, weight:206.5, date: Date.new(2018,3,1)})
 
 
