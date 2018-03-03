@@ -1,0 +1,1 @@
+json.partial! "api/weights/weight", weight: @weight

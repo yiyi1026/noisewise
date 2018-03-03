@@ -28,7 +28,7 @@ class Api::WeightsController < ApplicationController
 
   def search
     if params[:query].present?
-      @weights = Weight.where("title LIKE ?", "%#{params[:query]}%").limit(10)
+      @weights = Weight.where("user_id LIKE ?", "%#{params[:query]}%").limit(10)
       render :search
     else
       @weights = Weight.all
@@ -56,6 +56,6 @@ class Api::WeightsController < ApplicationController
   private
 
   def weight_params
-    params.require(:weight).permit(:username, :user_id, :weight, :date)
+    params.require(:weight).permit(:user, :user_id, :weight, :date)
   end
 end
