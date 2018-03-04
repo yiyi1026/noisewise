@@ -1,7 +1,7 @@
 class Api::WeightsController < ApplicationController
 
   def create
-    @weight = current_user.weights.new(weight_params)
+    @weight = Weight.new(weight_params)
 
     if @weight.save
       render json: @weight

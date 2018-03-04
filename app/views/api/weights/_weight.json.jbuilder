@@ -1,1 +1,1 @@
-json.extract! weight, :id, :user_id, :weight, :date
+json.extract! weight, :id, :weight, :date, :user_id
