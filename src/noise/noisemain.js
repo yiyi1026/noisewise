@@ -54,6 +54,10 @@ class NoiseMain extends Component {
 
 
   render() {
+
+    console.log("inside noisemain");
+    console.log(this.props)
+    console.log(this.state)
     this.bgColorChange(42000);
     let opacity = "0.4";
     let mute_state;

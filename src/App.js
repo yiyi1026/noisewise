@@ -14,13 +14,11 @@ class App extends Component {
 
 
   render() {
-
     return (
       <div>
         <Switch>
           {/* <Route path="/noise" component={Test}/> */}
-          <Route path="/" component={NoiseMain}/>
-
+          <Route path="/noise" component={NoiseMain}/>
         </Switch>
         </div>
     );
