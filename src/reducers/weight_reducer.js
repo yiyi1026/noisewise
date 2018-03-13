@@ -22,7 +22,7 @@ const byIdReducer = (state = {}, action) => {
     case RECEIVE_SINGLE_WEIGHT:
       return merge({}, nextState, {[action.weight.id]: action.weight});
     case RECEIVE_ALL_WEIGHTS:
-      return merge({}, nextState, action.weights);
+      return merge({}, nextState, action.weights.data);
     case REMOVE_WEIGHT:
       delete nextState[action.weight.id];
       return nextState;
@@ -35,24 +35,27 @@ const allIdsReducer = (state=[], action) => {
   Object.freeze(state);
 
   let allIds = merge([], state);
+  // console.log(action.weights.data);
+
   switch (action.type) {
     case RECEIVE_ALL_WEIGHTS:
-      Object.keys(action.weights).forEach(id => {
-        const initId = parseInt(id);
+      Object.keys(action.weights.data).forEach(id => {
+        const intId = parseInt(id);
         if (!allIds.includes(intId)){
           allIds.push(intId);
         }
-      return allIds;
       })
+      return allIds;
     case RECEIVE_SINGLE_WEIGHT:
+      // console.log(action.weight.data);
       let id = action.weight.id;
       if (allIds.includes(id)){
-        return state;
+        return allIds;
       }else {
         return [...state, id]
       }
     default:
-      return state;
+      return allIds;
   }
 }
 

@@ -32,7 +32,9 @@ export const receiveSearchedWeights = weights => ({
 export const requestAllWeights = () => dispatch => (
   APIUtil.utilFetchAllWeights()
   .then(
-    weights => dispatch(receiveAllWeights(weights))
+    weights => {
+      // console.log(weights);
+      return dispatch(receiveAllWeights(weights))}
     // , errors => dispatch(receiveErrors(errors))
   )
 );

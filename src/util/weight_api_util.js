@@ -6,6 +6,13 @@ export const utilFetchSingleWeight = id => (
   })
 );
 
+export const utilFetchAllWeights = () => (
+  axios({
+    method: 'get',
+    url: `/api/weights`,
+  })
+);
+
 export const utilSearchWeights = query => (
   axios({
     method: 'GET',
