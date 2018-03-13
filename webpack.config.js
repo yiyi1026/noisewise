@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: 'bundle.js'
@@ -10,16 +10,12 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: [/\.jsx?$/],
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
+          presets: ['env', 'react']
         }
-      },{
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [ 'style-loader', 'css-loader' ]
       }
     ]
   },

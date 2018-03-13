@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import NoiseMain from './noise/noisemain';
+// import './App.css';
+import NoiseMain from './noise/noisemain.jsx';
 // import Test from './noise/test';
+import WeightWatcher from './weights/weight_watcher.jsx';
 import { Switch, Route , HashRouter} from 'react-router-dom';
 
 class App extends Component {
@@ -12,12 +13,11 @@ class App extends Component {
 
   }
 
-
   render() {
     return (
       <div>
         <Switch>
-          {/* <Route path="/noise" component={Test}/> */}
+          <Route path="/weights" component={WeightWatcher}/>
           <Route path="/noise" component={NoiseMain}/>
         </Switch>
         </div>

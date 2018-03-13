@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Range from 'react-range';
-import './sound.css';
+// import './sound.css';
 
 class Sound extends Component {
   constructor(props){
@@ -41,7 +41,7 @@ class Sound extends Component {
 
   play(e){
     e.preventDefault();
-    console.log('click play')
+    // console.log('click play')
     let audio = this.state.audio;
     let toggle = this.state.toggle;
     if(toggle){
@@ -50,8 +50,7 @@ class Sound extends Component {
       audio.play();
     }
     this.setState({toggle: !toggle}, () => this.visibility(this.state.toggle));
-    console.log('finish play')
-    console.log(this.state)
+    // console.log('finish play')
   }
 
   volumeAdjust(e) {

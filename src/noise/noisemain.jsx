@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './noisemain.css';
-import Sound from './sound';
+// import './noisemain.css';
+import Sound from './sound.jsx';
 
 
 class NoiseMain extends Component {
@@ -44,7 +44,8 @@ class NoiseMain extends Component {
     setInterval(() => {this.changeColor(bgColor)}, interval);
   };
 
-  mute(){
+  mute(e){
+    e.preventDefault();
     if (this.state.muted === false){
       this.setState({muted: true});
     }else{
@@ -55,9 +56,6 @@ class NoiseMain extends Component {
 
   render() {
 
-    console.log("inside noisemain");
-    console.log(this.props)
-    console.log(this.state)
     this.bgColorChange(42000);
     let opacity = "0.4";
     let mute_state;
@@ -80,7 +78,7 @@ class NoiseMain extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
-        <a onClick={() => this.mute()} href="#" className="mute-btn">
+        <a onClick={(e) => this.mute(e)} href="#" className="mute-btn">
             <img alt="mute" id="mute-button" style={{opacity}} src={`./images/${mute_state}.png`} title={`${mute_state}`}/>
           </a>
         <div className="soundList container">
