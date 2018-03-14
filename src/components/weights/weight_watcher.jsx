@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './weight_watcher.css';
+// import './weight_watcher.css';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import WeightForm from './weight_form.jsx';
 
 class WeightWatcher extends Component {
   constructor(props){
@@ -21,6 +22,8 @@ class WeightWatcher extends Component {
     // console.log(this.props);
     // console.log(this.state);
     let chart = '';
+    let {createWeight} = this.props;
+    console.log(this.props);
     if(this.props.byId){
       let data = Object.values(this.props.byId);
       let bighash = {};
@@ -29,7 +32,7 @@ class WeightWatcher extends Component {
         if(!bighash[d.date]){
           bighash[d.date]={date: d.date, id: d.id}
         }
-        bighash[d.date][d.user_id] = d.weight;
+        bighash[d.date][d.user_id] = d.weight_value;
       });
 
       let finalData = []
@@ -59,6 +62,7 @@ class WeightWatcher extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
         {chart}
+        <WeightForm createWeight={ createWeight }/>
       </div>
     );
   }

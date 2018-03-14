@@ -20,13 +20,15 @@ export const utilSearchWeights = query => (
   })
 );
 
-export const utilCreateWeight = weight => (
+export const utilCreateWeight = weight => {
+  console.log(weight);
+  return (
   axios({
     method: 'POST',
     url: '/api/weights',
     data: { weight }
   })
-);
+)};
 
 export const utilUpdateWeight = weight => (
   axios({

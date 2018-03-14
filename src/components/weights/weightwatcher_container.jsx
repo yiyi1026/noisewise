@@ -37,4 +37,7 @@ const mapDispatchToProps = dispatch => ({
   // updateWeight: (weight) => dispatch(updateWeight(weight))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(WeightWatcher);
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(WeightWatcher);
