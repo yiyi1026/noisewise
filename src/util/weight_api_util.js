@@ -20,15 +20,13 @@ export const utilSearchWeights = query => (
   })
 );
 
-export const utilCreateWeight = weight => {
-  console.log(weight);
-  return (
+export const utilCreateWeight = weight => (
   axios({
     method: 'POST',
     url: '/api/weights',
     data: { weight }
   })
-)};
+);
 
 export const utilUpdateWeight = weight => (
   axios({
@@ -38,9 +36,10 @@ export const utilUpdateWeight = weight => (
   })
 )
 
-export const utilDeleteWeight = weight => (
+export const utilDeleteWeight = weight => {
+  return(
   axios({
     method: 'DELETE',
     url: `/api/weights/${weight.id}`
   })
-)
+)}

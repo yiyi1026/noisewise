@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+// import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 
 import {connect} from 'react-redux';
@@ -20,21 +20,17 @@ const mapStateToProps = (state, {match}) => {
     // weights: q,
     allIds: state.allIds,
     byId: state.byId,
-  //   currentWeight: state.weights.currentWeight,
-  //   topics: state.topics,
-  //   currentUser: state.session.currentUser,
-  //   currentTopic: state.session.currentTopic,
-  //   errors: []
 }
   // console.log(state);
   // return state;
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   // requestSingleTopic: (topicId) => dispatch(requestSingleTopic(topicId)),
   requestAllWeights: () => dispatch(requestAllWeights()),
   createWeight: (weight) => dispatch(createWeight(weight)),
-  // updateWeight: (weight) => dispatch(updateWeight(weight))
+  updateWeight: (weight) => dispatch(updateWeight(weight)),
+  deleteWeight: (weight) => dispatch(deleteWeight(weight)),
 });
 
 export default connect(

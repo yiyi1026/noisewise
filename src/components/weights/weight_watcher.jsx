@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import './weight_watcher.css';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import WeightForm from './weight_form.jsx';
+import WeightDetailContainer from './weight_detail_container.jsx';
+
 
 class WeightWatcher extends Component {
   constructor(props){
@@ -22,8 +24,10 @@ class WeightWatcher extends Component {
     // console.log(this.props);
     // console.log(this.state);
     let chart = '';
-    let {createWeight} = this.props;
-    console.log(this.props);
+    let {createWeight, updateWeight, deleteWeight} = this.props;
+    let finalData = [];
+    let weight_details;
+    // console.log(this.props);
     if(this.props.byId){
       let data = Object.values(this.props.byId);
       let bighash = {};
@@ -35,10 +39,16 @@ class WeightWatcher extends Component {
         bighash[d.date][d.user_id] = d.weight_value;
       });
 
-      let finalData = []
+      
       Object.keys(bighash).sort().forEach( d => {
         finalData.push(bighash[d])
       })
+      weight_details = data.map((weight, i) =>{
+        // console.log(weight);
+        return (<li key={i}>
+                <WeightDetailContainer weight={weight} />
+              </li>)
+      });
 
       // console.log(finalData)
       chart = <LineChart width={600} height={300} data={finalData}
@@ -63,6 +73,7 @@ class WeightWatcher extends Component {
         </p> */}
         {chart}
         <WeightForm createWeight={ createWeight }/>
+        <ul>{weight_details}</ul>
       </div>
     );
   }

@@ -53,7 +53,9 @@ class Api::WeightsController < ApplicationController
   end
 
   def destroy
-    @weight = current_user.weights.find(params[:id])
+    @weight = Weight.find(params[:id])
+    p 'inside destroy'
+    p @weight
     @weight.destroy
     render json: @weight
   end
@@ -61,6 +63,6 @@ class Api::WeightsController < ApplicationController
   private
 
   def weight_params
-    params.require(:weight).permit(:user, :user_id, :weight_value, :date)
+    params.require(:weight).permit(:user, :user_id, :weight_value, :date, :id)
   end
 end

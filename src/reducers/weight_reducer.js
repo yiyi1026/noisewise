@@ -54,6 +54,9 @@ const allIdsReducer = (state=[], action) => {
       }else {
         return [...state, id]
       }
+    case REMOVE_WEIGHT:
+      delete allIds[action.weight.id];
+      return allIds;
     default:
       return allIds;
   }

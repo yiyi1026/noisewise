@@ -4,7 +4,7 @@ class WeightForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      user_id: 1,
+      user_id: '',
       weight_value: "",
       date: ""
     };
@@ -40,20 +40,11 @@ class WeightForm extends Component {
     // return <div>weight Form</div>
     return(
       <form className="weight-form" onSubmit={this.handleSubmit}>
-        {/* <label>User:
-        <input
-        className="input"
-        ref="user_id"
-        value={this.state.user_id}
-        placeholder="user_id"
-        onChange={this.update('user_id')}
-        required/>
-        </label> */}
         <label> User
         <select
               value={this.state.user_id}
               onChange={this.update('user_id')}
-              defaultValue="Select User"
+              placeholder = "select user id"
             >
               {[1,2].map((type, i) => {
                 return <option value={type} key={i}>{type}</option>;
@@ -64,7 +55,7 @@ class WeightForm extends Component {
         <input 
         className="input"
         ref="weight"
-        value={this.state.weight}
+        value={this.state.weight_value}
         placeholder="Weight"
         onChange={this.update('weight_value')}
         required/>
