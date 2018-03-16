@@ -6,7 +6,6 @@ import {deleteWeight} from '../../actions/weight_actions'
 
 const mapDispatchToProps = (dispatch, {weight}) => ({
   // requestSingleTopic: (topicId) => dispatch(requestSingleTopic(topicId)),
-  requestAllWeights: () => dispatch(requestAllWeights()),
   deleteWeight: () => dispatch(deleteWeight(weight)),
 });
 

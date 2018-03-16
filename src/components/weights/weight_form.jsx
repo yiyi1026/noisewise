@@ -42,13 +42,13 @@ class WeightForm extends Component {
       <form className="weight-form" onSubmit={this.handleSubmit}>
         <label> User
         <select
-              value={this.state.user_id}
               onChange={this.update('user_id')}
-              placeholder = "select user id"
+              defaultValue='1'
             >
-              {[1,2].map((type, i) => {
-                return <option value={type} key={i}>{type}</option>;
-              })}
+            <option>1
+              </option>
+              <option>2
+              </option>
             </select>
             </label>
         <label>Weight(Lb):
