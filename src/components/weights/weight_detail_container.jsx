@@ -1,4 +1,3 @@
-
 import {connect} from 'react-redux';
 import WeightDetail from './weight_detail.jsx'
 import {deleteWeight} from '../../actions/weight_actions'

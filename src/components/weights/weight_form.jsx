@@ -4,7 +4,7 @@ class WeightForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      user_id: '',
+      user_id: '1',
       weight_value: "",
       date: ""
     };

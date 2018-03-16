@@ -8,8 +8,6 @@ class WeightDetail extends Component{
 
   render(){
     const {deleteWeight, weight} = this.props;
-    console.log(deleteWeight);
-    // console.log(weight);
     return(
     <div>
       <span className="weight-user">user_id: { weight.user_id} </span>
