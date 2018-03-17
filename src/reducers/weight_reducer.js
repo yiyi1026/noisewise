@@ -20,11 +20,11 @@ const byIdReducer = (state = {}, action) => {
   let nextState = merge({}, state);
   switch (action.type) {
     case RECEIVE_SINGLE_WEIGHT:
-      return merge({}, nextState, {[action.weight.id]: action.weight});
+      return merge({}, nextState, {[action.weight.data.id]: action.weight.data});
     case RECEIVE_ALL_WEIGHTS:
       return merge({}, nextState, action.weights.data);
     case REMOVE_WEIGHT:
-      delete nextState[action.weight.id];
+      delete nextState[action.weight.data.id];
       return nextState;
     default:
       return state;
@@ -48,14 +48,14 @@ const allIdsReducer = (state=[], action) => {
       return allIds;
     case RECEIVE_SINGLE_WEIGHT:
       // console.log(action.weight.data);
-      let id = action.weight.id;
+      let id = action.weight.data.id;
       if (allIds.includes(id)){
         return allIds;
       }else {
         return [...state, id]
       }
     case REMOVE_WEIGHT:
-      delete allIds[action.weight.id];
+      delete allIds[action.weight.data.id];
       return allIds;
     default:
       return allIds;
