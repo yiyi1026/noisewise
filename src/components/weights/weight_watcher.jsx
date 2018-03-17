@@ -43,7 +43,10 @@ class WeightWatcher extends Component {
       Object.keys(bighash).sort().forEach( d => {
         finalData.push(bighash[d])
       })
-      weight_details = data.map((weight, i) =>{
+      let dataSorted = data.sort(function(a,b) { 
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
+    });
+      weight_details = dataSorted.map((weight, i) =>{
         // console.log(weight);
         return (<li key={i}>
                 <WeightDetailContainer weight={weight} />
