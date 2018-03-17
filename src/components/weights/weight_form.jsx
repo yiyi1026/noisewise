@@ -26,10 +26,8 @@ class WeightForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
 ;
-    // console.log(this.props.createWeight);
     this.props.createWeight(this.state);
     this.setState({
-      user_id: "",
       weight_value: "",
       date: "",
     }); // reset form
@@ -37,7 +35,6 @@ class WeightForm extends Component {
 
   
   render(){
-    // return <div>weight Form</div>
     return(
       <form className="weight-form" onSubmit={this.handleSubmit}>
         <label> User
