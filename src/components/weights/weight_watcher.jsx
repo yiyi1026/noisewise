@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import './weight_watcher.css';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {LineChart, Line, XAxis, YAxis, Tooltip, Legend} from 'recharts';
 import WeightForm from './weight_form.jsx';
 import WeightDetailContainer from './weight_detail_container.jsx';
 import ReactTable from "react-table";
@@ -50,12 +50,12 @@ class WeightWatcher extends Component {
         return new Date(a.date).getTime() - new Date(b.date).getTime();
     });
 
-      weight_details = dataSorted.map((weight, i) =>{
-        // console.log(weight);
-        return (<li key={i}>
-                <WeightDetailContainer weight={weight} />
-              </li>)
-      });
+      // weight_details = dataSorted.map((weight, i) =>{
+      //   // console.log(weight);
+      //   return (<li key={i}>
+      //           <WeightDetailContainer weight={weight} />
+      //         </li>)
+      // });
 
       console.log(dataSorted)
       table = (
@@ -78,7 +78,15 @@ class WeightWatcher extends Component {
                 },{
                   Header: "Date",
                   accessor: "date",
-                  width: 400
+                  width: 250
+                },{
+                  Header: "Action",
+                  Cell: row => {
+                    console.log(row)
+                    return (
+                      <WeightDetailContainer weight={row.original} />
+                    )
+                  }
                 }
               ]
             }
@@ -93,7 +101,6 @@ class WeightWatcher extends Component {
                   margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                 <XAxis dataKey="date" type="category"/>
                 <YAxis type="number" domain={['dataMin-10', 'dataMax+3']}/>
-                <CartesianGrid strokeDasharray="3 3"/>
                 <Tooltip/>
                 <Legend />
                 <Line type="monotone" dataKey="1" stroke="#8884d8" activeDot={{r: 8}}/>
@@ -107,14 +114,14 @@ class WeightWatcher extends Component {
 
         <div className="container">
         <div className="row">
-        <div className="col-lg-1"></div>
+        {/* <div className="col-lg-1"></div> */}
         <div className="col-lg-8">
           {table}
           </div>
         </div>
 
-        <ul>{weight_details}</ul>
-
+        {/* <ul>{weight_details}</ul>
+        */}
         </div>
       </div>
     );
