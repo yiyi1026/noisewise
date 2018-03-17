@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import WeightForm from './weight_form.jsx';
 import WeightDetailContainer from './weight_detail_container.jsx';
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 
 
 class WeightWatcher extends Component {
@@ -27,6 +29,7 @@ class WeightWatcher extends Component {
     let {createWeight, updateWeight, deleteWeight} = this.props;
     let finalData = [];
     let weight_details;
+    let table = '';
     // console.log(this.props);
     if(this.props.byId){
       let data = Object.values(this.props.byId);
@@ -46,12 +49,44 @@ class WeightWatcher extends Component {
       let dataSorted = data.sort(function(a,b) { 
         return new Date(a.date).getTime() - new Date(b.date).getTime();
     });
+
       weight_details = dataSorted.map((weight, i) =>{
         // console.log(weight);
         return (<li key={i}>
                 <WeightDetailContainer weight={weight} />
               </li>)
       });
+
+      console.log(dataSorted)
+      table = (
+        <ReactTable
+          data={dataSorted}
+          columns={[
+            {
+              Header: "Weight",
+              columns: [
+                {
+                  Header: "User",
+                  accessor: "user_id",
+                  width: 80
+                },
+                {
+                  Header: "Value",
+                  id: "weight_value",
+                  accessor: d => d.weight_value,
+                  width: 200
+                },{
+                  Header: "Date",
+                  accessor: "date",
+                  width: 400
+                }
+              ]
+            }
+          ]}
+          defaultPageSize={30}
+          className="-striped -highlight"
+        />
+      )
 
       // console.log(finalData)
       chart = <LineChart width={600} height={300} data={finalData}
@@ -67,16 +102,20 @@ class WeightWatcher extends Component {
     }
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
         {chart}
         <WeightForm createWeight={ createWeight }/>
+
+        <div className="container">
+        <div className="row">
+        <div className="col-lg-1"></div>
+        <div className="col-lg-8">
+          {table}
+          </div>
+        </div>
+
         <ul>{weight_details}</ul>
+
+        </div>
       </div>
     );
   }

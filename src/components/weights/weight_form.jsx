@@ -66,7 +66,7 @@ class WeightForm extends Component {
         onChange={this.update('date')}
         required/>
         </label>
-        <button className="create-button">Add New Weight!</button>
+        <button className="create-button btn btn-primary">Add New Weight!</button>
       </form>
     )
   }
