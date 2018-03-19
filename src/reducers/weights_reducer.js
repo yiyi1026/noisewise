@@ -10,14 +10,14 @@ import {
 const defaultState =
 {
   byId: {},
-  allIds: [],
+  allIds: []
   // searchIds: [],
-  errors: []
 };
 
 const byIdReducer = (state = {}, action) => {
   Object.freeze(state);
   let nextState = merge({}, state);
+
   switch (action.type) {
     case RECEIVE_SINGLE_WEIGHT:
       return merge({}, nextState, {[action.weight.data.id]: action.weight.data});
@@ -58,7 +58,7 @@ const allIdsReducer = (state=[], action) => {
       delete allIds[action.weight.data.id];
       return allIds;
     default:
-      return allIds;
+      return state;
   }
 }
 

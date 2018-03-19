@@ -17,12 +17,10 @@ const mapStateToProps = (state, {match}) => {
   // let q = selectWeightsByTopicId(state.weights, topicId);
   // console.log(state);
   return {
-    // weights: q,
-    allIds: state.allIds,
-    byId: state.byId,
-}
-  // console.log(state);
-  // return state;
+    allIds: state.weights.allIds,
+    byId: state.weights.byId,
+    errors: state.errors
+  }
 };
 
 const mapDispatchToProps = (dispatch) => ({

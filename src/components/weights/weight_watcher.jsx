@@ -24,13 +24,12 @@ class WeightWatcher extends Component {
 
   render() {
     // console.log(this.props);
-    // console.log(this.state);
     let chart = '';
     let {createWeight, updateWeight, deleteWeight} = this.props;
     let finalData = [];
     let weight_details;
     let table = '';
-    // console.log(this.props);
+
     if(this.props.byId){
       let data = Object.values(this.props.byId);
       let bighash = {};

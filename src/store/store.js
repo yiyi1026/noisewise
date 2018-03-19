@@ -1,8 +1,11 @@
-import weightsReducer from '../reducers/weight_reducer';
-import {createStore, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+
+//reducers
+// import weightsReducer from '../reducers/weights_reducer';
+import rootReducer from '../reducers/root_reducer';
 
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
@@ -11,9 +14,9 @@ const composeEnhancers = composeWithDevTools({
 
 const configureStore = (preloadedState = {}) => 
   createStore(
-    weightsReducer,
-      preloadedState,
-      composeWithDevTools(applyMiddleware(thunk, logger))
+    rootReducer,
+    preloadedState,
+    composeWithDevTools(applyMiddleware(thunk, logger))
     )
   
 
