@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './weight_watcher.css';
+import './weight_watcher.css';
 import {LineChart, Line, XAxis, YAxis, Tooltip, Legend} from 'recharts';
 import WeightForm from './weight_form.jsx';
 import WeightDetailContainer from './weight_detail_container.jsx';
@@ -47,7 +47,7 @@ class WeightWatcher extends Component {
         finalData.push(bighash[d])
       })
       let dataSorted = data.sort(function(a,b) { 
-        return new Date(a.date).getTime() - new Date(b.date).getTime();
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
 
       // weight_details = dataSorted.map((weight, i) =>{
@@ -57,7 +57,7 @@ class WeightWatcher extends Component {
       //         </li>)
       // });
 
-      console.log(dataSorted)
+      // console.log(dataSorted);
       table = (
         <ReactTable
           data={dataSorted}
@@ -82,7 +82,7 @@ class WeightWatcher extends Component {
                 },{
                   Header: "Action",
                   Cell: row => {
-                    console.log(row)
+                    // console.log(row)
                     return (
                       <WeightDetailContainer weight={row.original} />
                     )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './weight_form.css';
 
 class WeightForm extends Component {
   constructor(props){
@@ -37,8 +38,8 @@ class WeightForm extends Component {
   render(){
     return(
       <form className="weight-form" onSubmit={this.handleSubmit}>
-        <label> User
-        <select
+        <label> User 
+        <select className='add-weight'
               onChange={this.update('user_id')}
               defaultValue='1'
             >
@@ -48,18 +49,18 @@ class WeightForm extends Component {
               </option>
             </select>
             </label>
-        <label>Weight(Lb):
+        <label> Weight(Lb):
         <input 
-        className="input"
+        className="input add-weight"
         ref="weight"
         value={this.state.weight_value}
         placeholder="Weight"
         onChange={this.update('weight_value')}
         required/>
         </label>
-        <label>Date:
+        <label> Date:
         <input
-        className="input"
+        className="input add-weight"
         ref="date"
         value={this.state.date}
         placeholder="Date"
