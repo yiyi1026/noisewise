@@ -15,6 +15,7 @@ class Weight < ApplicationRecord
 
   # each user should have at most one weight for each day
   validates_uniqueness_of :date, scope: %i[user_id]
+  validates :weight_value, numericality: { greater_than: 0 }
   #associations
   belongs_to :user
 

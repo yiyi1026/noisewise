@@ -13,7 +13,8 @@ const errorsReducer = (state = [], action) => {
 
   switch (action.type) {
     case RECEIVE_ERRORS:
-      return action.errors;
+      // console.log(action.errors.split(','));
+      return JSON.parse(action.errors);
     case CLEAR_ERRORS:
       return [];
     default:

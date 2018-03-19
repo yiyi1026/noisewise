@@ -4,7 +4,7 @@ import NoiseMain from './noise/noisemain.jsx';
 import { Link } from 'react-router-dom';
 // import Test from './noise/test';
 import WeightWatcherContainer from './components/weights/weightwatcher_container.jsx';
-
+import ErrorBoundary from './components/error_boundary';
 import { Switch, Route , HashRouter} from 'react-router-dom';
 
 const App = () => {

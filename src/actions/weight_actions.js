@@ -1,5 +1,5 @@
 import * as APIUtil from '../util/weight_api_util';
-import { receiveErrors } from './error_actions';
+import { receiveErrors, clearErrors } from './error_actions';
 
 //action types
 export const RECEIVE_ALL_WEIGHTS = 'RECEIVE_ALL_WEIGHTS';
@@ -53,9 +53,12 @@ export const requestSingleWeight = id => dispatch => (
 export const createWeight = weight => dispatch => (
   APIUtil.utilCreateWeight(weight)
   .then(
-    weight => {dispatch(receiveSingleWeight(weight));
+    weight => {
+      dispatch(receiveSingleWeight(weight));
       dispatch(clearErrors())},
-    errors => {dispatch(receiveErrors(errors))}
+    errors => {
+      console.log(errors.request);
+      return dispatch(receiveErrors(errors.request.responseText));}
   )
 );
 
