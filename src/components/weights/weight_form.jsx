@@ -4,10 +4,11 @@ import './weight_form.css';
 class WeightForm extends Component {
   constructor(props){
     super(props);
+    let utc = new Date().toJSON().slice(0,10);
     this.state = {
       user_id: '1',
       weight_value: "",
-      date: ""
+      date: utc
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,14 +29,16 @@ class WeightForm extends Component {
     e.preventDefault();
 ;
     this.props.createWeight(this.state);
+    let utc = new Date().toJSON().slice(0,10);
     this.setState({
       weight_value: "",
-      date: "",
+      date: utc,
     }); // reset form
   }
 
   
   render(){
+    let utc = new Date().toJSON().slice(0,10);
     return(
       <form className="weight-form" onSubmit={this.handleSubmit}>
         <label> User 
@@ -62,8 +65,7 @@ class WeightForm extends Component {
         <input
         className="input add-weight"
         ref="date"
-        value={this.state.date}
-        placeholder="Date"
+        defaultValue={utc}
         onChange={this.update('date')}
         required/>
         </label>
