@@ -9,8 +9,9 @@
 ### White Noise Custom Combinations
 
 ### Weight Watcher
-recharts to visualize weight progress
-Create, Read, Update and Delete
+1. Recharts to visualize weight progress
+2. ReactTable to show all weights data
+3. Create, Read, Update and Delete weight data function
 
 ## Future Directions for the Project
 
