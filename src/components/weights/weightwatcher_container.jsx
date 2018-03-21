@@ -13,9 +13,6 @@ import {
 // import { RingLoader } from 'react-spinners';
 
 const mapStateToProps = (state, {match}) => {
-  // const topicId = match.params.topicId? match.params.topicId : null;
-  // let q = selectWeightsByTopicId(state.weights, topicId);
-  // console.log(state);
   return {
     allIds: state.weights.allIds,
     byId: state.weights.byId,
@@ -24,7 +21,6 @@ const mapStateToProps = (state, {match}) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  // requestSingleTopic: (topicId) => dispatch(requestSingleTopic(topicId)),
   requestAllWeights: () => dispatch(requestAllWeights()),
   createWeight: (weight) => dispatch(createWeight(weight)),
   updateWeight: (weight) => dispatch(updateWeight(weight)),

@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
+import WeightForm from './weight_form.jsx';
 // import './weight_watcher.css';
 
 class WeightDetail extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      showUpdateForm: false,
+      weight: this.props.weight
+    }
+    this.handleUpdate = this.handleUpdate.bind(this);
+  }
+
+  handleUpdate(e){
+    e.preventDefault();
+    this.props.updateWeight(this.props.weight);    
+  }
 
   render(){
-    const {deleteWeight, weight} = this.props;
+    const {deleteWeight, weight, updateWeight} = this.props;
     return(
-    <div>
-      {/* <span className="weight-user">user_id: { weight.user_id} </span>
-      <span className="weight-user">weight: { weight.weight_value} </span>
-      <span className="weight-user">date: { weight.date}</span> */}
-      <button className="btn btn-sm" onClick={deleteWeight}>delete</button>
-    </div>
+      <div>
+        <button className="btn btn-sm btn-table" onClick={deleteWeight}>Delete</button>
+        <button className="btn btn-sm btn-table" onClick={this.handleUpdate}>Update</button>
+      </div>
     )
+    // }
   }
 }
 

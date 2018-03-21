@@ -11,19 +11,32 @@ class WeightWatcher extends Component {
   constructor(props){
     super(props);
 
-    this.state = {
-      muted: false,
-    };
-  
-    
+    this.renderEditable = this.renderEditable.bind(this)
   }
 
   componentDidMount(){
     this.props.requestAllWeights();
   }
 
+  renderEditable(row) {
+    return (
+      <div
+        style={{ backgroundColor: "#fafafa" }}
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={e => {
+          const data = row.original;
+          data[row.column.id] = e.target.innerHTML;          
+        }}
+
+        dangerouslySetInnerHTML={{
+          __html: row.original[row.column.id]
+        }}
+      />
+    );
+  }
+
   render() {
-    // console.log(this.props);
     let chart = '';
     let {createWeight, updateWeight, deleteWeight} = this.props;
     let finalData = [];
@@ -48,15 +61,7 @@ class WeightWatcher extends Component {
       let dataSorted = data.sort(function(a,b) { 
         return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
-
-      // weight_details = dataSorted.map((weight, i) =>{
-      //   // console.log(weight);
-      //   return (<li key={i}>
-      //           <WeightDetailContainer weight={weight} />
-      //         </li>)
-      // });
-
-      // console.log(dataSorted);
+ 
       table = (
         <ReactTable
           data={dataSorted}
@@ -67,21 +72,23 @@ class WeightWatcher extends Component {
                 {
                   Header: "User",
                   accessor: "user_id",
+                  Cell: this.renderEditable,
                   width: 80
                 },
                 {
                   Header: "Value",
                   id: "weight_value",
                   accessor: d => d.weight_value,
+                  Cell: this.renderEditable,
                   width: 200
                 },{
                   Header: "Date",
                   accessor: "date",
+                  Cell: this.renderEditable,
                   width: 250
                 },{
                   Header: "Action",
                   Cell: row => {
-                    // console.log(row)
                     return (
                       <WeightDetailContainer weight={row.original} />
                     )
@@ -95,7 +102,6 @@ class WeightWatcher extends Component {
         />
       )
 
-      // console.log(finalData)
       chart = <LineChart width={600} height={300} data={finalData}
                   margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                 <XAxis dataKey="date" type="category"/>
@@ -107,20 +113,14 @@ class WeightWatcher extends Component {
               </LineChart>
     }
     return (
-      <div className="App">
-        {chart}
-        <WeightForm createWeight={ createWeight }/>
-
-        <div className="container">
+      <div className="App container">
+        <div className='row chart-name'><h3 className='col-lg-8'>Progress</h3></div>
+        <div className='row'>{chart}</div>
+        <div className='row'><WeightForm createWeight={ createWeight } /></div>
         <div className="row">
-        {/* <div className="col-lg-1"></div> */}
-        <div className="col-lg-8">
-          {table}
+          <div className="col-lg-8">
+            {table}
           </div>
-        </div>
-
-        {/* <ul>{weight_details}</ul>
-        */}
         </div>
       </div>
     );
