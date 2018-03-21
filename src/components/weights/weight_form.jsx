@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './weight_form.css';
+import ErrorList from '../error_list.jsx';
 
 class WeightForm extends Component {
   constructor(props){
@@ -40,6 +41,7 @@ class WeightForm extends Component {
 
     return(
       <form className="weight-form" onSubmit={this.handleSubmit}>
+      <ErrorList errors={ this.props.errors } />
         <label> User 
         <select className='add-weight'
               onChange={this.update('user_id')}

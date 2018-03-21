@@ -38,7 +38,7 @@ class WeightWatcher extends Component {
 
   render() {
     let chart = '';
-    let {createWeight} = this.props;
+    let {createWeight, errors} = this.props;
     let finalData = [];
     let table = '';
 
@@ -115,7 +115,7 @@ class WeightWatcher extends Component {
       <div className="App container">
         <div className='row chart-name'><h3 className='col-lg-8'>Progress</h3></div>
         <div className='row'>{chart}</div>
-        <div className='row'><WeightForm createWeight={ createWeight } /></div>
+        <div className='row'><WeightForm createWeight={ createWeight } errors={errors} /></div>
         <div className="row">
           <div className="col-lg-8">
             {table}
