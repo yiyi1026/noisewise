@@ -101,7 +101,7 @@ class WeightWatcher extends Component {
         />
       )
 
-      chart = <LineChart width={600} height={300} data={finalData}
+      chart = <LineChart width={800} height={400} data={finalData}
                   margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                 <XAxis dataKey="date" type="category"/>
                 <YAxis type="number" domain={['dataMin-10', 'dataMax+3']}/>
@@ -113,7 +113,7 @@ class WeightWatcher extends Component {
     }
     return (
       <div className="App container">
-        <div className='row chart-name'><h3 className='col-lg-8'>Progress</h3></div>
+        <div className='row chart-name'><h3 className='col-lg-8'>Progress Chart</h3></div>
         <div className='row'>{chart}</div>
         <div className='row'><WeightForm createWeight={ createWeight } errors={errors} /></div>
         <div className="row">
