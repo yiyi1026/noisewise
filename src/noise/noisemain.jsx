@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './noisemain.css';
+import './noisemain.css';
 import Sound from './sound.jsx';
 
 
@@ -71,13 +71,6 @@ class NoiseMain extends Component {
 
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
         <a onClick={(e) => this.mute(e)} href="#" className="mute-btn">
             <img alt="mute" id="mute-button" style={{opacity}} src={`./images/${mute_state}.png`} title={`${mute_state}`}/>
           </a>

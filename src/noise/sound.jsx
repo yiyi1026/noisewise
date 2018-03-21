@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Range from 'react-range';
-// import './sound.css';
+import './sound.css';
 
 class Sound extends Component {
   constructor(props){
