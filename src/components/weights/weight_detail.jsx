@@ -6,15 +6,8 @@ class WeightDetail extends Component{
   constructor(props){
     super(props);
     this.state = {
-      showUpdateForm: false,
       weight: this.props.weight
     }
-    this.handleUpdate = this.handleUpdate.bind(this);
-  }
-
-  handleUpdate(e){
-    e.preventDefault();
-    this.props.updateWeight(this.props.weight);    
   }
 
   render(){
@@ -22,7 +15,7 @@ class WeightDetail extends Component{
     return(
       <div>
         <button className="btn btn-sm btn-table" onClick={deleteWeight}>Delete</button>
-        <button className="btn btn-sm btn-table" onClick={this.handleUpdate}>Update</button>
+        <button className="btn btn-sm btn-table" onClick={updateWeight}>Update</button>
       </div>
     )
     // }

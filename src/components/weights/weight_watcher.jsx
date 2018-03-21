@@ -38,9 +38,8 @@ class WeightWatcher extends Component {
 
   render() {
     let chart = '';
-    let {createWeight, updateWeight, deleteWeight} = this.props;
+    let {createWeight} = this.props;
     let finalData = [];
-    let weight_details;
     let table = '';
 
     if(this.props.byId){
