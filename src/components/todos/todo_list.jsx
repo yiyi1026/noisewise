@@ -12,7 +12,8 @@ class TodoList extends Component{
   // }
 
   render(){
-    const {receiveTodo} = this.props;
+    console.log(this.props);
+    const {createTodo, receiveTodo} = this.props;
     const todos = this.props.byId;
     // // const items = [];
     let items;
@@ -23,10 +24,9 @@ class TodoList extends Component{
     }
 
     return (<div>
-              {/* <TodoForm receiveTodo={receiveTodo}/> */}
+              <TodoForm createTodo={createTodo} receiveTodo={receiveTodo}/>
               <ul>
                 {items}
-                todo List
               </ul>
             </div>)
   }

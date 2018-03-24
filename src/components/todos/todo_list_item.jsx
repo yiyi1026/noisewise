@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 
 class TodoListItem extends Component{
   constructor(props){
@@ -6,6 +6,7 @@ class TodoListItem extends Component{
   }
 
   render(){
+    console.log(this.props.todo)
     let todo = this.props.todo;
     return (<li>{todo.title}</li>)
   }

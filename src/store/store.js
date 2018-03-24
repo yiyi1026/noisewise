@@ -12,12 +12,20 @@ const composeEnhancers = composeWithDevTools({
 
 });
 
-const configureStore = (preloadedState = {}) => 
-  createStore(
-    rootReducer,
-    preloadedState,
-    composeWithDevTools(applyMiddleware(thunk, logger))
+const configureStore = (preloadedState = {}) => {
+  const store = 
+    createStore(
+      rootReducer,
+      preloadedState,
+      composeWithDevTools(applyMiddleware(thunk, logger)
     )
+  );
+  store.subscribe(() => {
+    localStorage.state = JSON.stringify(store.getState());
+  })
+
+  return store;
+}
   
 
 export default configureStore;

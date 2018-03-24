@@ -3,7 +3,7 @@ import './App.css';
 import NoiseMain from './noise/noisemain.jsx';
 import { Link } from 'react-router-dom';
 // import Test from './noise/test';
-import WeightWatcherContainer from './components/weights/weightwatcher_container.jsx';
+import WeightWatcherContainer from './components/weights/weight_watcher_container.jsx';
 import TodoListContainer from './components/todos/todo_list_container.jsx';
 import ErrorBoundary from './components/error_boundary';
 import { Switch, Route , HashRouter} from 'react-router-dom';

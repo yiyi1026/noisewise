@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 
 class TodoForm extends Component{
   constructor(props){
@@ -10,6 +10,7 @@ class TodoForm extends Component{
 
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.uniqueId = this.uniqueId.bind(this);
 
   }
 
@@ -24,9 +25,15 @@ class TodoForm extends Component{
     }
   }
 
+  uniqueId(){
+      return parseInt(new Date().getTime());
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createTodo(this.state);
+    const todo = Object.assign({}, this.state, { id: this.uniqueId() });
+    this.props.receiveTodo(todo);
+    // this.props.createTodo(this.state);
     this.setState({
       title: "",
       done: false,
@@ -38,7 +45,7 @@ class TodoForm extends Component{
 
     return(
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label> Title
             <input 
               ref='title'
@@ -49,6 +56,17 @@ class TodoForm extends Component{
             >
             </input>
           </label>
+          <label> Done 
+        <select
+              onChange={this.update('done')}
+              defaultValue={false}
+            >
+            <option>false
+              </option>
+              <option>true
+              </option>
+            </select>
+            </label>
           <button className="create-button btn btn-primary">Add New Todo!</button>
           </form>
         </div>
