@@ -4,7 +4,8 @@ import {allTodos} from '../../reducers/selectors';
 import {
   createTodo,
   receiveTodo, 
-  receiveTodos
+  receiveTodos,
+  removeTodo
 } from '../../actions/todo_actions';
 
 

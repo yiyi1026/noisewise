@@ -24,7 +24,7 @@ const initialState = {
 const byIdReducer = (state = {}, action) => {
   Object.freeze(state);
   let nextState = merge({}, state);
-  console.log(action);
+  // console.log(action);
   switch (action.type){
     case RECEIVE_TODOS:
       return merge({}, nextState, action.todos);

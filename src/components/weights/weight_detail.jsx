@@ -5,9 +5,6 @@ import WeightForm from './weight_form.jsx';
 class WeightDetail extends Component{
   constructor(props){
     super(props);
-    this.state = {
-      weight: this.props.weight
-    }
   }
 
   render(){
