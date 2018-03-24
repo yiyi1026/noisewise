@@ -1,6 +1,3 @@
-// import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
-
 import {connect} from 'react-redux';
 import WeightWatcher from './weight_watcher.jsx';
 import {

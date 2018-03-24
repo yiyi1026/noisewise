@@ -65,7 +65,6 @@ const allIdsReducer = (state=[], action) => {
 const weightsReducer = combineReducers({
   byId: byIdReducer,
   allIds: allIdsReducer,
-  // currentQuestion: weightReducer,
   // searchIds: searchIdsReducer
 });
 export default weightsReducer;

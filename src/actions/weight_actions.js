@@ -19,16 +19,14 @@ export const receiveSingleWeight = (weight) => ({
 });
 
 
-export const removeWeight = weight => {
-  console.log("remove");
-  return({
+export const removeWeight = weight => ({
   type: REMOVE_WEIGHT,
   weight
-})};
+});
 
 export const receiveSearchedWeights = weights => ({
   type: RECEIVE_SEARCHED_WEIGHTS,
-  weights: weights
+  weights
 });
 
 
