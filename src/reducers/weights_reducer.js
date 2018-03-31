@@ -55,7 +55,8 @@ const allIdsReducer = (state=[], action) => {
         return [...state, id]
       }
     case REMOVE_WEIGHT:
-      delete allIds[action.weight.data.id];
+      let idx = allIds.indexOf(action.weight.data.id);
+      delete allIds[idx];
       return allIds;
     default:
       return state;

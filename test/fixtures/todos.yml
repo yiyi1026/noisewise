@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: todos
+#
+#  id         :integer          not null, primary key
+#  date       :date             not null
+#  tag        :string           not null
+#  user_id    :integer          not null
+#  done       :boolean          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  title      :string           not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined. If you add columns to the

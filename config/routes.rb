@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create, :show]
     resources :weights, only: [:create, :show, :edit, :update, :destroy, :search, :index]
+    resources :todos, only: [:index, :show, :create, :update, :destroy]
   end
 
   root "static_pages#root"

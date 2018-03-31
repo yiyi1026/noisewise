@@ -1,7 +1,6 @@
 class Api::WeightsController < ApplicationController
 
   def create
-    p 'hit create method'
     @weight = Weight.new(weight_params)
 
     if @weight.save
@@ -41,7 +40,7 @@ class Api::WeightsController < ApplicationController
 
 
   def index
-    p 'hit index method'
+    # p 'hit index method'
     if params[:query].present?
       @weights = Weight.where("user_id LIKE ?", "%#{params[:query]}%")
       # .limit(10)

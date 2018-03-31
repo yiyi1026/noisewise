@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
+import {utc} from '../../util/pst';
 
 class TodoForm extends Component{
   constructor(props){
     super(props);
+    // let utc = new Date().toLocaleString("en-US", {timeZone: "America/Santiago"}).split(",")[0];
     this.state = {
+      tag: "grocery",
       title: '',
       user_id: 1,
-      done: false
-
+      done: false,
+      date: utc()
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.uniqueId = this.uniqueId.bind(this);
@@ -31,13 +34,14 @@ class TodoForm extends Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    const todo = Object.assign({}, this.state, { id: this.uniqueId() });
-    this.props.receiveTodo(todo);
-    // this.props.createTodo(this.state);
-    this.setState({
-      title: "",
-      done: false,
-    }); // reset form
+    const todo = Object.assign({}, this.state);
+
+    this.props.createTodo({todo}).then(
+      this.setState({
+        title: "",
+        done: false,
+      }) // reset form
+    );
   }
 
 

@@ -1,4 +1,4 @@
-import merge from 'lodash/merge';
+import {values, merge} from 'lodash';
 import {combineReducers} from 'redux';
 import {
   RECEIVE_TODO,
@@ -43,27 +43,30 @@ const byIdReducer = (state = {}, action) => {
 const allIdsReducer = (state=[], action) => {
   Object.freeze(state);
   let allIds = merge([], state);
-
+  let id;
+  
   switch (action.type){
     case RECEIVE_TODOS:
+      console.log(action.todos);
       Object.keys(action.todos).map(id => {
           const intId = parseInt(id);
           if (!allIds.includes(intId)){
             allIds.push(intId);
           }
-          return allIds;
-        }
-      )
+      });
+      return allIds;
 
     case RECEIVE_TODO:
-      let id = action.todo.id;
+      id = action.todo.id;
       if (!allIds.includes(id)){
         return [...state, id]
       }else {
         return allIds;
       }
     case REMOVE_TODO:
-      delete allIds[action.todo.id];
+      id = action.todo.id;
+      let idx = allIds.indexOf(id);
+      delete allIds[idx];
       return allIds;
     default:
       return state;

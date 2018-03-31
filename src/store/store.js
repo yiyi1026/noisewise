@@ -20,9 +20,9 @@ const configureStore = (preloadedState = {}) => {
       composeWithDevTools(applyMiddleware(thunk, logger)
     )
   );
-  store.subscribe(() => {
-    localStorage.state = JSON.stringify(store.getState());
-  })
+  // store.subscribe(() => {
+  //   localStorage.state = JSON.stringify(store.getState());
+  // })
 
   return store;
 }

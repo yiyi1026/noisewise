@@ -5,23 +5,26 @@ import {
   createTodo,
   receiveTodo, 
   receiveTodos,
-  removeTodo
+  requestAllTodos,
+  deleteTodo
 } from '../../actions/todo_actions';
 
 
 const mapStateToProps = ({todos}) => {
   // console.log(todos);
   return {
-    // todos: allTodos({todos}),
-    byId: todos.byId,
-    allIds: todos.allIds
+    todos: allTodos({todos})
+    // ,
+    // byId: todos.byId,
+    // allIds: todos.allIds
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  createTodo: (todo) => dispatch(receiveTodo(todo)),
+  createTodo: (todo) => dispatch(createTodo(todo)),
+  receiveTodos: () => dispatch(requestAllTodos()),
   receiveTodo: (todo) => dispatch(receiveTodo(todo)),
-  removeTodo: (todo) => dispatch(removeTodo(todo))
+  removeTodo: (todo) => dispatch(deleteTodo(todo))
   // receiveTodos: () => dispatch(receiveTodos())
 });
 

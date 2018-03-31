@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactTable from "react-table";
 import TodoListItem from './todo_list_item.jsx';
 import TodoForm from './todo_form.jsx';
 
@@ -7,18 +8,17 @@ class TodoList extends Component{
     super(props)
   }
 
-  // componentDidMount() {
-  //   this.props.receiveTodos();
-  // }
+  componentDidMount() {
+    this.props.receiveTodos();
+  }
 
   render(){
-    console.log(this.props);
-    const {createTodo, receiveTodo, removeTodo} = this.props;
-    const todos = this.props.byId;
+    const {createTodo, receiveTodo, removeTodo, todos} = this.props;
+    console.log(todos);
     // // const items = [];
     let items;
     if (todos){
-      items = Object.values(todos).map((todo,idx)=>{
+      items = todos.map((todo,idx)=>{
         return <TodoListItem todo={todo} key={idx} removeTodo={removeTodo}/>;
       });
     }

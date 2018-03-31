@@ -7,7 +7,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 //test
-import {receiveTodos, receiveTodo} from './actions/todo_actions';
+import {requestAllTodos, receiveTodos, receiveTodo} from './actions/todo_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch;
   window.receiveTodo = receiveTodo;
   window.receiveTodos = receiveTodos;
+  window.requestAllTodos = requestAllTodos;
   ReactDOM.render(
     <Root store={store}/>, document.getElementById('root'));
 });
