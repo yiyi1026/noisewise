@@ -13,7 +13,7 @@ class TodoList extends Component{
   }
 
   render(){
-    const {createTodo, receiveTodo, removeTodo, todos} = this.props;
+    const {createTodo, receiveTodo, removeTodo, todos, errors} = this.props;
     // console.log(todos);
     // // const items = [];
     let items;
@@ -24,7 +24,7 @@ class TodoList extends Component{
     }
 
     return (<div>
-              <TodoForm createTodo={createTodo} receiveTodo={receiveTodo}/>
+              <TodoForm createTodo={createTodo} receiveTodo={receiveTodo} errors={errors}/>
               <ul>
                 {items}
               </ul>

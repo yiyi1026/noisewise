@@ -10,10 +10,10 @@ import {
 } from '../../actions/todo_actions';
 
 
-const mapStateToProps = ({todos}) => {
-  // console.log(todos);
+const mapStateToProps = (state) => {
   return {
-    todos: allTodos({todos})
+    todos: allTodos(state.todos),
+    errors: state.errors
     // ,
     // byId: todos.byId,
     // allIds: todos.allIds

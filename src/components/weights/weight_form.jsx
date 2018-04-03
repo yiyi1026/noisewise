@@ -44,7 +44,7 @@ class WeightForm extends Component {
     console.log(pst);
     return(
       <form className="weight-form" onSubmit={this.handleSubmit}>
-      <ErrorList errors={ this.props.errors } />
+        <ErrorList errors={ this.props.errors } />
         <label> User 
         <select className='add-weight'
               onChange={this.update('user_id')}

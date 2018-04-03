@@ -25,9 +25,8 @@ export const removeTodo = todo => ({
 export const requestAllTodos = () => dispatch => (
   APIUtil.utilFetchAllTodos()
   .then(
-    todos => {
-      return dispatch(receiveTodos(todos))}
-    , errors => dispatch(receiveErrors(errors))
+    todos => {return dispatch(receiveTodos(todos))}, 
+    errors => dispatch(receiveErrors(errors))
   )
 );
 
