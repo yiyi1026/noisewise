@@ -47,7 +47,7 @@ const allIdsReducer = (state=[], action) => {
   
   switch (action.type){
     case RECEIVE_TODOS:
-      console.log(action.todos);
+      // console.log(action.todos);
       Object.keys(action.todos).map(id => {
           const intId = parseInt(id);
           if (!allIds.includes(intId)){
@@ -66,7 +66,7 @@ const allIdsReducer = (state=[], action) => {
     case REMOVE_TODO:
       id = action.todo.id;
       let idx = allIds.indexOf(id);
-      delete allIds[idx];
+      allIds.splice(idx, 1);
       return allIds;
     default:
       return state;

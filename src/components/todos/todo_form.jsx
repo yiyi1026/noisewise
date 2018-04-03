@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
-import {utc} from '../../util/pst';
+import {pst} from '../../util/pst';
 
 class TodoForm extends Component{
   constructor(props){
     super(props);
-    // let utc = new Date().toLocaleString("en-US", {timeZone: "America/Santiago"}).split(",")[0];
+
     this.state = {
       tag: "grocery",
       title: '',
       user_id: 1,
       done: false,
-      date: utc()
+      date: pst()
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.uniqueId = this.uniqueId.bind(this);
 
   }
 
@@ -28,15 +27,11 @@ class TodoForm extends Component{
     }
   }
 
-  uniqueId(){
-      return parseInt(new Date().getTime());
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const todo = Object.assign({}, this.state);
 
-    this.props.createTodo({todo}).then(
+    this.props.createTodo({todo}).then(() =>
       this.setState({
         title: "",
         done: false,
@@ -46,10 +41,19 @@ class TodoForm extends Component{
 
 
   render(){
-
+    let pst = this.state.date;
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
+          <label> Date
+            <input 
+              ref='date'
+              defaultValue={pst}
+              onChange={this.update('date')} 
+              required
+            >
+            </input>
+          </label>
           <label> Title
             <input 
               ref='title'

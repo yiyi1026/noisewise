@@ -17,7 +17,7 @@ const configureStore = (preloadedState = {}) => (
     rootReducer,
     preloadedState,
     composeWithDevTools(applyMiddleware(thunk, logger))
-  );
+  )
 );
   
 

@@ -14,7 +14,7 @@ class TodoList extends Component{
 
   render(){
     const {createTodo, receiveTodo, removeTodo, todos} = this.props;
-    console.log(todos);
+    // console.log(todos);
     // // const items = [];
     let items;
     if (todos){

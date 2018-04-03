@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './weight_form.css';
 import ErrorList from '../error_list.jsx';
-import {utc} from '../../util/pst';
+import {pst} from '../../util/pst';
 
 
 class WeightForm extends Component {
@@ -11,7 +11,7 @@ class WeightForm extends Component {
     this.state = {
       user_id: '1',
       weight_value: "",
-      date: utc(),
+      date: pst()
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,14 +34,14 @@ class WeightForm extends Component {
     this.props.createWeight(weight).then(
       () => this.setState({
         weight_value: "",
-        date: utc()
+        date: pst()
       })
     ); // reset form
   }
 
   render(){
-    let utc = new Date().toJSON().slice(0,10); 
-
+    let pst = this.state.date; 
+    console.log(pst);
     return(
       <form className="weight-form" onSubmit={this.handleSubmit}>
       <ErrorList errors={ this.props.errors } />
@@ -69,7 +69,7 @@ class WeightForm extends Component {
         <input
         className="input add-weight"
         ref="date"
-        defaultValue={utc}
+        defaultValue={pst}
         onChange={this.update('date')}
         required/>
         </label>

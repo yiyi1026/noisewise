@@ -21,8 +21,9 @@ class TodoListItem extends Component{
   render(){
     console.log(this.props);
     const {todo} = this.props;
-    const {title, date} = todo;
-    return (<li>{title} {date}
+    console.log(todo);
+    const {title, date, tag} = todo;
+    return (<li>{title} {date} {tag}
       <button className="btn btn-sm btn-table" onClick={this.handleRemoveTodo}
       >Delete</button>
       {/* <button className="btn btn-sm btn-table" onClick={this.handleDrag}
