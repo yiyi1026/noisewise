@@ -17,6 +17,7 @@ class Api::WeightsController < ApplicationController
 
   def update
     @weight = Weight.find(params[:id])
+
     if @weight.update(weight_params)
       render json: @weight
     else
@@ -50,8 +51,8 @@ class Api::WeightsController < ApplicationController
   end
 
   def destroy
-    @weight = Weight.find(params[:id])
     p 'inside destroy'
+    @weight = Weight.find(params[:id])
     p @weight
     @weight.destroy
     render json: @weight

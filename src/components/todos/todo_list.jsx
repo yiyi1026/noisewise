@@ -13,13 +13,12 @@ class TodoList extends Component{
   }
 
   render(){
-    const {createTodo, receiveTodo, removeTodo, todos, errors} = this.props;
-    // console.log(todos);
-    // // const items = [];
+    const {createTodo, receiveTodo, deleteTodo, todos, errors} = this.props;
+
     let items;
     if (todos){
       items = todos.map((todo,idx)=>{
-        return <TodoListItem todo={todo} key={idx} removeTodo={removeTodo}/>;
+        return <TodoListItem todo={todo} key={idx} deleteTodo={deleteTodo}/>;
       });
     }
 

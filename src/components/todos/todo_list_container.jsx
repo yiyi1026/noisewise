@@ -3,9 +3,10 @@ import TodoList from './todo_list.jsx';
 import {allTodos} from '../../reducers/selectors';
 import {
   createTodo,
-  receiveTodo, 
-  receiveTodos,
+  // receiveTodo, 
+  // receiveTodos,
   requestAllTodos,
+  requestSingleTodo,
   deleteTodo
 } from '../../actions/todo_actions';
 
@@ -23,9 +24,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   createTodo: (todo) => dispatch(createTodo(todo)),
   receiveTodos: () => dispatch(requestAllTodos()),
-  receiveTodo: (todo) => dispatch(receiveTodo(todo)),
-  removeTodo: (todo) => dispatch(deleteTodo(todo))
-  // receiveTodos: () => dispatch(receiveTodos())
+  receiveTodo: (todo) => dispatch(requestSingleTodo(todo)),
+  deleteTodo: (todo) => dispatch(deleteTodo(todo))
 });
 
 export default connect (

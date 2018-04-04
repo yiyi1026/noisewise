@@ -30,9 +30,9 @@ const byIdReducer = (state = {}, action) => {
       return merge({}, nextState, action.todos);
       // return action.todos;
     case RECEIVE_TODO:
-      console.log(action.todo);
-      return merge({}, nextState, {[action.todo.id]: action.todo});
+    return merge({}, nextState, {[action.todo.id]: action.todo});
     case REMOVE_TODO:
+
       delete nextState[action.todo.id];
       return nextState;
     default:
