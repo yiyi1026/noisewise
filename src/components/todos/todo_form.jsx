@@ -46,7 +46,7 @@ class TodoForm extends Component{
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <ErrorList errors={this.props.errors} />
+          {/* <ErrorList errors={this.props.errors} /> */}
           <label> Date
             <input 
               ref='date'

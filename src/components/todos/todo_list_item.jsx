@@ -19,15 +19,12 @@ class TodoListItem extends Component{
   }
 
   render(){
-    console.log(this.props);
     const {todo} = this.props;
-    console.log(todo);
-    const {title, date, tag} = todo;
-    return (<li>{title} {date} {tag}
-      <button className="btn btn-sm btn-table" onClick={this.handleRemoveTodo}
-      >Delete</button>
-      {/* <button className="btn btn-sm btn-table" onClick={this.handleDrag}
-      >Drag</button> */}
+    const {title, date, tag, done} = todo;
+    return (
+      <li>{date} {title} {tag} {done? 'Undo': 'Done'}
+        <button className="btn btn-sm btn-table" onClick={this.handleRemoveTodo}
+        >Delete</button>
       </li>)
   }
 }

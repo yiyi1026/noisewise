@@ -55,7 +55,8 @@ const allIdsReducer = (state=[], action) => {
         return [...state, id]
       }
     case REMOVE_WEIGHT:
-      let idx = allIds.indexOf(action.weight.data.id);
+    let idx = allIds.indexOf(action.weight.data.id);
+    console.log(idx);
       allIds.splice(idx, 1);
       return allIds;
     default:

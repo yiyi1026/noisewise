@@ -18,6 +18,10 @@ class WeightWatcher extends Component {
     this.props.requestAllWeights();
   }
 
+  // shouldComponentUpdate(nextProps, nextState){
+  //   this.props.requestAllWeights();
+  // }
+
   renderEditable(row) {
     return (
       <div
@@ -89,7 +93,7 @@ class WeightWatcher extends Component {
                   Header: "Action",
                   Cell: row => {
                     return (
-                      <WeightDetailContainer weight={row.original} />
+                      <WeightDetailContainer weight={row.original} errors={errors} />
                     )
                   }
                 }

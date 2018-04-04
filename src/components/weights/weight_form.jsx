@@ -32,16 +32,15 @@ class WeightForm extends Component {
     e.preventDefault();
     const weight = Object.assign({}, this.state);
     this.props.createWeight(weight).then(
-      () => this.setState({
+      () => (this.setState({
         weight_value: "",
         date: pst()
-      })
+      }))
     ); // reset form
   }
 
   render(){
     let pst = this.state.date; 
-    console.log(pst);
     return(
       <form className="weight-form" onSubmit={this.handleSubmit}>
         <ErrorList errors={ this.props.errors } />

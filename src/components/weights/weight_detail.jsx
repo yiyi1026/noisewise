@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WeightForm from './weight_form.jsx';
 // import './weight_watcher.css';
+import {requestSingleWeight} from '../../actions/weight_actions';
 
 class WeightDetail extends Component{
   constructor(props){

@@ -17,10 +17,8 @@ class Api::WeightsController < ApplicationController
 
   def update
     @weight = Weight.find(params[:id])
-    if @weight
-      if @weight.update_attributes(weight_params)
-        render :show
-      end
+    if @weight.update(weight_params)
+      render json: @weight
     else
       render json: @weight.errors.full_messages, status: 422
     end
