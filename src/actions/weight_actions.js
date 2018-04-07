@@ -52,7 +52,8 @@ export const createWeight = weight => dispatch => (
   APIUtil.utilCreateWeight(weight)
   .then(
     weight => {
-      dispatch(clearErrors())},
+      dispatch(receiveSingleWeight(weight));
+      dispatch(clearErrors());},
     errors => {
       dispatch(receiveErrors(errors.request.responseText));}
   )
