@@ -43,23 +43,8 @@ class TodoDraggableList extends Component {
 		}
 	}
 
-	// render() {
-  //   // Your component receives its own props as usual
-  //   const { id } = this.props;
-
-  //   // These two props are injected by React DnD,
-  //   // as defined by your `collect` function above:
-  //   const { isDragging, connectDropTarget } = this.props;
-
-  //   return connectDropTarget(
-  //     <div>
-  //       I am a draggable card number {id}
-  //       {isDragging && ' (and I am being dragged now)'}
-  //     </div>
-  //   );
-  // }
 	render() {
-		console.log(this.props)
+		// console.log(this.props)
 		const { canDrop, isOver, connectDropTarget } = this.props
 		const isActive = canDrop && isOver
 

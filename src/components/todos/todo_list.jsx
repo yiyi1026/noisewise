@@ -18,18 +18,17 @@ class TodoList extends Component{
   }
 
   render(){
-    const {createTodo, receiveTodo, deleteTodo, todos, errors} = this.props;
-
+    const {createTodo, receiveTodo, deleteTodo, updateTodo, todos, errors} = this.props;
     // let items;
     let undoneItems;
     let doneItems;
     if (todos){
 
       doneItems = todos.filter(todo => todo.done === true).map((todo,idx)=>{
-        return <TodoListItem type="Done" todo={todo} key={idx} deleteTodo={deleteTodo}/>;
+        return <TodoListItem type="Done" todo={todo} key={idx} deleteTodo={deleteTodo} updateTodo={updateTodo}/>;
       });
       undoneItems = todos.filter(todo => todo.done === false).map((todo,idx)=>{
-        return <TodoListItem type="Undone" todo={todo} key={idx} deleteTodo={deleteTodo}/>;
+        return <TodoListItem type="Undone" todo={todo} key={idx} deleteTodo={deleteTodo} updateTodo={updateTodo}/>;
       });
     }
 

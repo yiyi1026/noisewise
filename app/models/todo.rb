@@ -22,7 +22,7 @@ class Todo < ApplicationRecord
   validates_uniqueness_of :title, scope: [:user_id, :date]
 
   # todo should be planned ahead
-  validate :date_cannot_be_in_the_past
+  validate :date_cannot_be_in_the_past, on: [:create]
   
   # associations
   belongs_to :user

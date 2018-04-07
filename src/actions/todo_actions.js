@@ -30,16 +30,16 @@ export const requestAllTodos = () => dispatch => (
   )
 );
 
-// export const requestSingleTodo = id => dispatch => (
-//   APIUtil.utilFetchSingleTodo(id)
-//   .then(
-//     todo => dispatch(receiveSingleTodo(todo))
-//     // ,errors => dispatch(receiveErrors(errors))
-//   )
-// );
+export const requestSingleTodo = id => dispatch => (
+  APIUtil.utilFetchSingleTodo(id)
+  .then(
+    todo => dispatch(receiveTodo(todo))
+    // ,errors => dispatch(receiveErrors(errors))
+  )
+);
 
 export const createTodo = todo => dispatch => {
-  console.log('create');
+  // console.log('create');
   return (
   APIUtil.utilCreateTodo(todo)
   .then(
@@ -55,7 +55,7 @@ export const createTodo = todo => dispatch => {
 export const updateTodo = todo => dispatch => (
   APIUtil.utilUpdateTodo(todo)
   .then(
-    todo => dispatch(receiveSingleTodo(todo)),
+    todo => dispatch(receiveTodo(todo)),
     errors => dispatch(receiveErrors(errors))
   )
 );

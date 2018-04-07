@@ -7,6 +7,7 @@ import {
   // receiveTodos,
   requestAllTodos,
   requestSingleTodo,
+  updateTodo,
   deleteTodo
 } from '../../actions/todo_actions';
 
@@ -25,6 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
   createTodo: (todo) => dispatch(createTodo(todo)),
   receiveTodos: () => dispatch(requestAllTodos()),
   receiveTodo: (todo) => dispatch(requestSingleTodo(todo)),
+  updateTodo:(todo) => dispatch(updateTodo(todo)),
   deleteTodo: (todo) => dispatch(deleteTodo(todo))
 });
 

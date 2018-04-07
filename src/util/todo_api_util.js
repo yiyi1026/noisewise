@@ -26,10 +26,10 @@ export const utilUpdateTodo = todo => (
   $.ajax({
     method: 'PATCH',
     url: `/api/todos/${todo.id}`,
-    data: todo
+    data: {todo}
   })
 );
-
+  
 export const utilDeleteTodo = todo => (
   $.ajax({
     method: 'DELETE',

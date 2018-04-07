@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {merge} from 'lodash';
 
 // drag
 import PropTypes from 'prop-types';
@@ -15,18 +16,21 @@ const boxSource = {
 	},
 
 	endDrag(props, monitor) {
-		const item = monitor.getItem()
-		const dropResult = monitor.getDropResult()
-
+		const item = monitor.getItem();
+    const dropResult = monitor.getDropResult();
+    const {todo, updateTodo} = props;
 		if (dropResult) {
       let ori = item.type
       let des 
       if(ori == "Undone"){
-        des = "Done"
+        des = "Done";
       } else if (ori == "Done"){
-        des = "Undone"
+        des = "Undone";
       }
-      alert(`You want to change ${item.title} from ${ori} to ${des}!`)
+      
+      const toggleTodo = merge({}, todo, {done: !todo.done});
+      updateTodo(toggleTodo);
+      // alert(`You want to change ${item.title} from ${ori} to ${des}!`)
       // eslint-disable-line no-alert
 		}
 	},
