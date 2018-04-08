@@ -3,18 +3,8 @@ import { DropTarget } from 'react-dnd';
 import PropTypes from 'prop-types';
 import ItemTypes from './item_types';
 
-const style = {
-	height: '12rem',
-	width: '12rem',
-	marginRight: '1.5rem',
-	marginBottom: '1.5rem',
-	color: 'white',
-	padding: '1rem',
-	textAlign: 'center',
-	fontSize: '1rem',
-	lineHeight: 'normal',
-	float: 'left',
-}
+//css
+import './todo_draggable_list.css';
 
 const boxTarget = {
 	drop() {
@@ -45,8 +35,10 @@ class TodoDraggableList extends Component {
 
 	render() {
 		// console.log(this.props)
-		const { canDrop, isOver, connectDropTarget } = this.props
-		const isActive = canDrop && isOver
+		const { canDrop, isOver, connectDropTarget } = this.props;
+		const isActive = canDrop && isOver;
+		const type = this.props.type;
+		const realType = (type==='Undone' ? 'Done' : 'Undone');
 
 		let backgroundColor = '#222'
 		if (isActive) {
@@ -57,12 +49,11 @@ class TodoDraggableList extends Component {
 
 		return connectDropTarget(
 			<div 
-			style={{style}}
+			className='draggable-target'
 			>
-				type is {this.props.type}, 
-				{isActive ? 'Release to drop' : 'Drag a box here'}
+				{realType} Todo List, {isActive ? 'Release to drop' : `Drag ${realType} Todo Here`}
 				{this.props.list}
-			</div>,
+			</div>
 		)
 	}
 }

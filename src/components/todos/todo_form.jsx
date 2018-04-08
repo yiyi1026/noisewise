@@ -44,7 +44,7 @@ class TodoForm extends Component{
   render(){
     let pst = this.state.date;
     return(
-      <div>
+      <div className='container center'>
         <form onSubmit={this.handleSubmit}>
           {/* <ErrorList errors={this.props.errors} /> */}
           <label> Date

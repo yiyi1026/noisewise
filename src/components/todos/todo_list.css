@@ -6,3 +6,11 @@
   width:50%;
   float: left;
 }
+
+.center{
+  text-align: center;
+}
+
+input, select{
+  margin:0.2em 0.5em;
+}

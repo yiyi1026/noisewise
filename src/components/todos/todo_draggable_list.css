@@ -1,0 +1,12 @@
+.draggable-target{
+  border: 1px dashed black;
+  min-height: 24em;
+	min-width: 12em;
+	margin-right: 1.5em;
+	margin-bottom: 1.5em;
+	padding: 1em;
+	text-align: center;
+	font-size: 1em;
+	line-height: normal;
+	float: left;
+}

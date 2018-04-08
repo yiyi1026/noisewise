@@ -3,8 +3,6 @@ import TodoList from './todo_list.jsx';
 import {allTodos} from '../../reducers/selectors';
 import {
   createTodo,
-  // receiveTodo, 
-  // receiveTodos,
   requestAllTodos,
   requestSingleTodo,
   updateTodo,

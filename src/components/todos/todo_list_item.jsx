@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import { DragSource } from 'react-dnd';
 import ItemTypes from '../drag_and_drop/item_types';
 
+//css
+import './todo_list_item.css';
+
 //drag
 const boxSource = {
 	beginDrag(props) {

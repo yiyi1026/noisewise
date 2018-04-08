@@ -1,0 +1,15 @@
+.todo-list-item{
+  border: 1px dashed gray;
+	background-color: gray;
+	padding: 0.2em 1em;
+	margin: 0.5em;
+	cursor: move;
+  float: left;
+  line-height: 0.7em;
+  min-width: 9em;
+}
+
+.btn-table{
+  margin-left: 0.4em;
+  padding: 0.2em;
+}

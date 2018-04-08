@@ -7,7 +7,7 @@ import TodoDraggableList from './todo_draggable_list.jsx'
 
 class TodoList extends Component{
   constructor(props){
-    super(props)
+    super(props);
   }
 
   componentDidMount() {
@@ -32,16 +32,13 @@ class TodoList extends Component{
       <div>
         <TodoForm createTodo={createTodo} receiveTodo={receiveTodo} errors={errors}/>
         <div className='float-left container'>
-          <ul className='todo-undone-list'>
-            <li className='todo-item-title'><div className='drag-target'>Undone Todo here</div></li>
-          {/* {items} */}
-            <TodoDraggableList list={undoneItems} type="Done" />
+          <ul className='todo-list'>
+            <TodoDraggableList list={undoneItems} type="Done" /> {/*Undone_drag*/}
           </ul>
         </div>
         <div className='float-left container'>
-          <ul className='todo-done-list'>
-          <li className='todo-item-title'><div className='drag-target'> Done Todo here</div></li>
-          <TodoDraggableList list={doneItems} type="Undone" />
+          <ul className='todo-list'>
+            <TodoDraggableList list={doneItems} type="Undone" /> {/*Done_drag*/}
           </ul>
         </div>
       </div>

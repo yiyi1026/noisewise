@@ -3,19 +3,6 @@ import { DropTarget } from 'react-dnd';
 import PropTypes from 'prop-types';
 import ItemTypes from './item_types';
 
-const style = {
-	height: '12rem',
-	width: '12rem',
-	marginRight: '1.5rem',
-	marginBottom: '1.5rem',
-	color: 'white',
-	padding: '1rem',
-	textAlign: 'center',
-	fontSize: '1rem',
-	lineHeight: 'normal',
-	float: 'left',
-}
-
 const boxTarget = {
 	drop() {
 		return { abc: 'DropTarget' }
@@ -63,11 +50,9 @@ class MyDropTarget extends Component {
 		}
 
 		return connectDropTarget(
-			<div 
-			style={{style}}
-			>
+			<div>
 				{isActive ? 'Release to drop' : 'Drag a box here'}
-			</div>,
+			</div>
 		)
 	}
 }
