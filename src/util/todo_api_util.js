@@ -10,7 +10,7 @@ export const utilFetchAllTodos = () => (
     method: 'GET',
     url: 'api/todos'
   })
-)
+);
 
 export const utilCreateTodo = todo => {
   console.log('hi');

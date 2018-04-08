@@ -39,7 +39,6 @@ export const requestSingleTodo = id => dispatch => (
 );
 
 export const createTodo = todo => dispatch => {
-  // console.log('create');
   return (
   APIUtil.utilCreateTodo(todo)
   .then(

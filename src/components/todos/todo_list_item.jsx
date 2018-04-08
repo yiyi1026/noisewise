@@ -30,8 +30,7 @@ const boxSource = {
       
       const toggleTodo = merge({}, todo, {done: !todo.done});
       updateTodo(toggleTodo);
-      // alert(`You want to change ${item.title} from ${ori} to ${des}!`)
-      // eslint-disable-line no-alert
+
 		}
 	},
 };

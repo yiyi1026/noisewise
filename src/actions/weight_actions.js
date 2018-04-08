@@ -33,9 +33,7 @@ export const receiveSearchedWeights = weights => ({
 export const requestAllWeights = () => dispatch => (
   APIUtil.utilFetchAllWeights()
   .then(
-    weights => {
-      // console.log(weights);
-      return dispatch(receiveAllWeights(weights))}
+    weights => dispatch(receiveAllWeights(weights))
     // , errors => dispatch(receiveErrors(errors))
   )
 );
@@ -79,7 +77,7 @@ export const deleteWeight = weight => dispatch => (
 
 export const searchWeights = query => dispatch => (
   APIUtil.utilSearchWeights(query)
-  .then(weights =>
-    dispatch(receiveSearchedWeights(weights))
+  .then(
+    weights => dispatch(receiveSearchedWeights(weights))
   )
 );
