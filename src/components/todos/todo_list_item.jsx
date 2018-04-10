@@ -59,7 +59,10 @@ class TodoListItem extends Component{
     const opacity = isDragging ? 0.4 : 1;
 
     let item = 
-      (<li draggable="true" className='todo-list-item' 
+      (<li 
+        draggable="true" 
+        className='todo-list-item'
+        style={{opacity}}
       >{date} {title} {tag} {done? 'Done': 'Undone'}
         <button className="btn btn-sm btn-table" onClick={() => deleteTodo(todo)}
         >Delete</button>
