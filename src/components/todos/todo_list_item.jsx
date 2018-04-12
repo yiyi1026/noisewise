@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {merge} from 'lodash';
+import ErrorList from '../error_list.jsx';
 
 // drag
 import PropTypes from 'prop-types';
@@ -51,21 +52,117 @@ function collect(connect, monitor) {
 class TodoListItem extends Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      todo: this.props.todo,
+      showEdit: false
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleFold = this.toggleFold.bind(this);
   };
 
+  toggleFold(){
+    // console.log('here');
+    let form = document.getElementById("update-todo-form");
+    const showEdit = this.state.showEdit;
+    this.setState({showEdit: !showEdit}), 
+    () => {
+      console.log(this.props);
+      if (form.style.display === "none") {
+        form.style.display = "block";
+      } else {
+        form.style.display = "none";
+      }
+      console.log('toggle');
+    };
+  }
+
+  update(key){
+    switch (key){
+      case "user_id":
+        return e => this.setState({[key]: parseInt(e.target.value)});
+      case "done":
+        return e => this.setState({[key]: e.target.value});
+      default:
+        return e => this.setState({[key]: e.target.value});
+    }
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    let todo = merge({},this.state.todo);
+    console.log(todo);
+    this.props.updateTodo(todo);
+  }
+
 	render() {
-		const { isDragging, connectDragSource, todo, deleteTodo } = this.props;
-		const { title, date, tag, done } = todo;
-    const opacity = isDragging ? 0.4 : 1;
+    const { isDragging, connectDragSource, todo, deleteTodo, updateTodo } = this.props;
+
+    const {date, title, tag, done, id} = this.state.todo;
+    let {showEdit} = this.state;
+    console.log(showEdit);
+    const display = (!!showEdit) ? 'block' : 'none';
+    const toggleDisplay =  (!showEdit) ? 'inline-block' : 'none';
+    const toggleButtonName = showEdit ? 'Fold' : 'Unfold';
+    // console.log(display);
+		// const { title, date, tag, done, id } = this.state;
+    const {opacity} = isDragging ? 0.4 : 1;
 
     let item = 
       (<li 
         draggable="true" 
-        className='todo-list-item'
-        style={{opacity}}
-      >{date} {title} {tag} {done? 'Done': 'Undone'}
-        <button className="btn btn-sm btn-table" onClick={() => deleteTodo(todo)}
-        >Delete</button>
+        className='todo-list-item  list-group-item list-group-item-action'
+        style={opacity}
+        key = {id}
+        > 
+        <div
+          style={{display:toggleDisplay}}
+        > {date} {title} {tag} {done? 'Done': 'Undone'}</div>
+        <button className="btn btn-sm btn-table btn-primary" onClick={this.toggleFold}
+        >{toggleButtonName}</button>
+        <button style={{display:toggleDisplay}} className="btn btn-sm btn-table btn-danger" onClick={() => deleteTodo(todo)}
+            >Delete</button>
+        <div className=''>
+          <form id= 'update-todo-form' onSubmit={this.handleSubmit}
+          >
+            {/* <ErrorList errors={this.props.errors} /> */}
+            <label style={{display}}> Date
+              <input 
+                ref='date'
+                defaultValue={this.state.todo.date}
+                onChange={this.update('date')} 
+                required
+              >
+              </input>
+            </label>
+            <label style={{display}}> Title:
+              <input 
+                ref='title'
+                value={this.state.todo.title}
+                placeholder='buy milk'
+                onChange={this.update('title')} 
+                required
+              />
+            </label>
+            <label  style={{display}}> Tag:
+              <input 
+              ref="tag"
+              defaultValue={this.state.todo.tag}
+              onChange={this.update('tag')}
+              required/>
+              </label>
+            <label  style={{display}}> Done 
+              <select
+                    onChange={this.update('done')}
+                    defaultValue={false}
+              >
+                <option>false</option>
+                <option>true</option>
+              </select>
+            </label>
+            <button  style={{display}} className="create-button btn btn-primary">Update</button>
+            </form>
+          </div>
       </li>)
 		return connectDragSource(<div>{item}</div>)
 	}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './weight_watcher.css';
 import {LineChart, Line, XAxis, YAxis, Tooltip, Legend} from 'recharts';
+import ErrorList from '../error_list.jsx';
 import WeightForm from './weight_form.jsx';
 import WeightDetailContainer from './weight_detail_container.jsx';
 import ReactTable from "react-table";
@@ -17,10 +18,6 @@ class WeightWatcher extends Component {
   componentDidMount(){
     this.props.requestAllWeights();
   }
-
-  // shouldComponentUpdate(nextProps, nextState){
-  //   this.props.requestAllWeights();
-  // }
 
   renderEditable(row) {
     return (
@@ -117,15 +114,19 @@ class WeightWatcher extends Component {
     }
     return (
       <div className="App container">
-        <div className='row chart-name'><h3 className='col-lg-8'>Progress Chart</h3></div>
+        <div className='row chart-name'><h3 className='col-lg-8'>Progress Chart</h3>
+        </div>
         <div className='row'>{chart}</div>
-        <div className='row'><WeightForm createWeight={ createWeight } errors={errors} /></div>
-        <div className="row">
-          <div className="col-lg-8">
-            {table}
+        <div className='row'>
+          <ErrorList errors={ this.props.errors } />
+
+          <WeightForm createWeight={ createWeight } errors={errors} /></div>
+          <div className="row">
+            <div className="col-lg-8">
+              {table}
+            </div>
           </div>
         </div>
-      </div>
     );
   }
 }

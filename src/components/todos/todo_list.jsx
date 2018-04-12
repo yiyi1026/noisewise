@@ -3,7 +3,7 @@ import ReactTable from "react-table";
 import TodoListItem from './todo_list_item.jsx';
 import TodoForm from './todo_form.jsx';
 import './todo_list.css';
-import TodoDraggableList from './todo_draggable_list.jsx'
+import TodoDraggableList from './todo_draggable_list.jsx';
 
 class TodoList extends Component{
   constructor(props){
@@ -11,7 +11,7 @@ class TodoList extends Component{
   }
 
   componentDidMount() {
-    this.props.receiveTodos();
+    this.props.requestAllTodos();
   }
 
   render(){

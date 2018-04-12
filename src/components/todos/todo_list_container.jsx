@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   createTodo: (todo) => dispatch(createTodo(todo)),
-  receiveTodos: () => dispatch(requestAllTodos()),
+  requestAllTodos: () => dispatch(requestAllTodos()),
   receiveTodo: (todo) => dispatch(requestSingleTodo(todo)),
   updateTodo:(todo) => dispatch(updateTodo(todo)),
   deleteTodo: (todo) => dispatch(deleteTodo(todo))

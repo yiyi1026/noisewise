@@ -1,6 +1,6 @@
 .todo-list-item{
   border: 1px dashed gray;
-	background-color: silver;
+	/* background-color: silver; */
 	padding: 0.2em 1em;
 	margin: 0.5em;
   line-height: 0.7em;
@@ -8,7 +8,7 @@
 	cursor: move;  
 }
 
-/* .btn-table{
+.btn-table{
   margin-left: 0.4em;
   padding: 0.2em;
-} */
+}
