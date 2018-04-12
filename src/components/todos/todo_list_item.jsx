@@ -61,30 +61,27 @@ class TodoListItem extends Component{
     this.toggleFold = this.toggleFold.bind(this);
   };
 
-  toggleFold(){
-    // console.log('here');
-    let form = document.getElementById("update-todo-form");
+  toggleFold(e){
+    e.preventDefault();
     const showEdit = this.state.showEdit;
-    this.setState({showEdit: !showEdit}), 
-    () => {
-      console.log(this.props);
-      if (form.style.display === "none") {
-        form.style.display = "block";
-      } else {
-        form.style.display = "none";
-      }
-      console.log('toggle');
-    };
+    this.setState({showEdit: !showEdit})
   }
 
   update(key){
+    let originalTodo = this.state.todo;
+    let todo = merge({}, originalTodo);
     switch (key){
-      case "user_id":
-        return e => this.setState({[key]: parseInt(e.target.value)});
+      // case "user_id":
+      //   return e => this.setState({[key]: parseInt(e.target.value)});
       case "done":
-        return e => this.setState({[key]: e.target.value});
+      return e => {
+          todo[key] = e.target.value
+          this.setState({todo})};
       default:
-        return e => this.setState({[key]: e.target.value});
+      
+        return e => {
+          todo[key] = e.target.value
+          this.setState({todo})};
     }
   }
 
@@ -100,12 +97,11 @@ class TodoListItem extends Component{
 
     const {date, title, tag, done, id} = this.state.todo;
     let {showEdit} = this.state;
-    console.log(showEdit);
+
     const display = (!!showEdit) ? 'block' : 'none';
     const toggleDisplay =  (!showEdit) ? 'inline-block' : 'none';
     const toggleButtonName = showEdit ? 'Fold' : 'Unfold';
-    // console.log(display);
-		// const { title, date, tag, done, id } = this.state;
+
     const {opacity} = isDragging ? 0.4 : 1;
 
     let item = 
