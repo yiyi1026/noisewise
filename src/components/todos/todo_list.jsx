@@ -21,11 +21,15 @@ class TodoList extends Component{
     if (todos){
 
       doneItems = todos.filter(todo => todo.done === true).map((todo,idx)=>{
-        return <TodoListItem type="Done" todo={todo} key={idx} deleteTodo={deleteTodo} updateTodo={updateTodo}/>;
+        return <TodoListItem type="Done" todo={todo} key={todo.id} deleteTodo={deleteTodo} updateTodo={updateTodo}/>;
       });
+      // console.log('done')
+      // console.log(doneItems)
       undoneItems = todos.filter(todo => todo.done === false).map((todo,idx)=>{
-        return <TodoListItem type="Undone" todo={todo} key={idx} deleteTodo={deleteTodo} updateTodo={updateTodo}/>;
+        return <TodoListItem type="Undone" todo={todo} key={todo.id} deleteTodo={deleteTodo} updateTodo={updateTodo}/>;
       });
+        // console.log('undone')
+        // console.log(undoneItems)
     }
 
     return (

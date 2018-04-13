@@ -22,7 +22,9 @@ const boxSource = {
 	endDrag(props, monitor) {
 		const item = monitor.getItem();
     const dropResult = monitor.getDropResult();
-    const {todo, updateTodo} = props;
+    const {updateTodo} = props;
+    const oldTodo = props.todo;
+    // console.log(oldTodo);
 		if (dropResult) {
       let ori = item.type
       let des 
@@ -32,8 +34,8 @@ const boxSource = {
         des = "Undone";
       }
       
-      const toggleTodo = merge({}, todo, {done: !todo.done});
-      updateTodo(toggleTodo);
+      const todo = merge({}, oldTodo, {done: !oldTodo.done});
+      updateTodo(todo);
 
 		}
 	},
@@ -69,27 +71,25 @@ class TodoListItem extends Component{
 
   update(key){
     let originalTodo = this.state.todo;
-    let todo = merge({}, originalTodo);
+    // let todo = merge({}, originalTodo);
     switch (key){
-      // case "user_id":
-      //   return e => this.setState({[key]: parseInt(e.target.value)});
+      case "user_id":
+        return e => this.setState({[key]: parseInt(e.target.value)});
       case "done":
-      return e => {
-          todo[key] = e.target.value
+        return e => {
+          // todo[key] = e.target.value
+          let todo = merge({}, originalTodo, {[key]: e.target.value});
           this.setState({todo})};
       default:
-      
         return e => {
-          todo[key] = e.target.value
+          let todo = merge({}, originalTodo, {[key]: e.target.value});
           this.setState({todo})};
     }
   }
 
   handleSubmit(e){
     e.preventDefault();
-    let todo = merge({},this.state.todo);
-    console.log(todo);
-    this.props.updateTodo(todo);
+    this.props.updateTodo(this.state.todo);
   }
 
 	render() {
@@ -150,7 +150,7 @@ class TodoListItem extends Component{
             <label  style={{display}}> Done 
               <select
                     onChange={this.update('done')}
-                    defaultValue={false}
+                    defaultValue={this.state.todo.done}
               >
                 <option>false</option>
                 <option>true</option>
