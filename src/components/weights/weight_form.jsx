@@ -33,8 +33,8 @@ class WeightForm extends Component {
     const weight = Object.assign({}, this.state);
     this.props.createWeight(weight).then(
       () => (this.setState({
-        weight_value: "",
-        date: pst()
+        weight_value: ""
+        // ,date: pst()
       }))
     ); // reset form
   }
