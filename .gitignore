@@ -47,5 +47,5 @@ yarn-error.log*
 
 .vscode/*
 
-bundle.js
-bundle.js.map
+# bundle.js
+# bundle.js.map
